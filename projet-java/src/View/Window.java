@@ -1,6 +1,8 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.SystemColor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +22,15 @@ public class Window extends JFrame {
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
 
+		JPanel panNorth = new JPanel();
+		panNorth.setBackground(SystemColor.info);
+		panNorth.setPreferredSize(new Dimension(340, 470));
+
+		JPanel panCenter = new JPanel();
+		panCenter.setBackground(SystemColor.info);
+
+		container.add(panNorth, BorderLayout.NORTH);
+		container.add(panCenter, BorderLayout.CENTER);
 		this.setContentPane(container);
 	}
 
