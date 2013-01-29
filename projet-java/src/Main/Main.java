@@ -11,6 +11,7 @@ public class Main {
 		Window window = new Window();
 		window.setVisible(true); // On la rend visible
 
-	}
+		// ma modification
 
+	}
 }
