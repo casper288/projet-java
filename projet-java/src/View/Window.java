@@ -26,6 +26,8 @@ public class Window extends JFrame {
 		panNorth.setBackground(SystemColor.info);
 		panNorth.setPreferredSize(new Dimension(340, 470));
 
+		// Agathe
+
 		JPanel panCenter = new JPanel();
 		panCenter.setBackground(SystemColor.info);
 
