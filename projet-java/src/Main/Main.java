@@ -12,6 +12,6 @@ public class Main {
 		window.setVisible(true); // On la rend visible
 
 		// ma modification
-
+		// Agathe
 	}
 }
