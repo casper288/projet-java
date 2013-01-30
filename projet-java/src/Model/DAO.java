@@ -14,7 +14,7 @@ import java.sql.Statement;
  */
 public class DAO {
 
-	private static Connection connection = null;
+	private Connection connection = null;
 	private final String driver = "com.mysql.jdbc.Driver";
 	private final String connectionString = "jdbc:mysql://127.0.0.1/statistiquesdb?user=prosit&password=prosit";
 	private Statement statement = null;
@@ -22,24 +22,27 @@ public class DAO {
 	public DAO() {
 		try {
 			Class.forName(this.driver);
-			DAO.connection = DriverManager.getConnection(this.connectionString);
-			this.statement = DAO.connection.createStatement();
-		} catch (Exception e) {
+			this.connection = DriverManager
+					.getConnection(this.connectionString);
+			this.statement = this.connection.createStatement();
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public ResultSet executeQuery(final String query) {
-
+	public ResultSet executeQuery(final String query) throws SQLException {
 		ResultSet resultSet;
-
-		try {
-			resultSet = this.statement.executeQuery(query);
-		} catch (SQLException e) {
-			return null;
-		}
-
+		resultSet = this.statement.executeQuery(query);
 		return resultSet;
+	}
+
+	public int executeUpdate(final String query) throws SQLException {
+		return this.statement.executeUpdate(query);
+	}
+
+	public void closeDAO() throws SQLException {
+		this.connection.close();
+		this.statement.close();
 	}
 
 }
