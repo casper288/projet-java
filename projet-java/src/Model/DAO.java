@@ -9,7 +9,7 @@ import java.sql.Statement;
 /**
  * Classe connexion BDD
  * 
- * @author david
+ * @author david,agathe,alexandre
  * @version 1.0
  */
 public class DAO {
