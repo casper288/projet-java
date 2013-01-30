@@ -9,38 +9,38 @@ import javax.swing.JPanel;
 
 public class Window extends JFrame {
 
-    /**
+	/**
 	 * 
 	 */
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public Window() {
-	this.setTitle("Projet Java");
-	this.setSize(540, 540);
-	this.setLocationRelativeTo(null);
-	this.setResizable(false);
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	this.initComponent(); // initialisation du contenu de la fenêtre
-    }
+	public Window() {
+		this.setTitle("Projet Java");
+		this.setSize(1024, 768);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.initComponent(); // initialisation du contenu de la fenêtre
+	}
 
-    private void initComponent() {
-	JPanel container = new JPanel();
-	container.setLayout(new BorderLayout());
+	private void initComponent() {
+		JPanel container = new JPanel();
+		container.setLayout(new BorderLayout());
 
-	JPanel panNorth = new JPanel();
-	panNorth.setBackground(SystemColor.info);
-	panNorth.setPreferredSize(new Dimension(340, 470));
+		JPanel panNorth = new JPanel();
+		panNorth.setBackground(SystemColor.info);
+		panNorth.setPreferredSize(new Dimension(340, 470));
 
-	// Agathe
+		// Agathe
 
-	// Alex
+		// Alex
 
-	JPanel panCenter = new JPanel();
-	panCenter.setBackground(SystemColor.info);
+		JPanel panCenter = new JPanel();
+		panCenter.setBackground(SystemColor.info);
 
-	container.add(panNorth, BorderLayout.NORTH);
-	container.add(panCenter, BorderLayout.CENTER);
-	this.setContentPane(container);
-    }
+		container.add(panNorth, BorderLayout.NORTH);
+		container.add(panCenter, BorderLayout.CENTER);
+		this.setContentPane(container);
+	}
 
 }
