@@ -103,11 +103,11 @@ public class ManagePan {
 
 		JPanel ppPanel5 = new JPanel();
 		ppPanel5.setBackground(Color.WHITE);
-		ppPanel5.setPreferredSize(new Dimension(400, 15));
+		ppPanel5.setPreferredSize(new Dimension(200, 15));
 
 		JPanel ppPanel6 = new JPanel();
 		ppPanel6.setBackground(Color.WHITE);
-		ppPanel6.setPreferredSize(new Dimension(400, 5));
+		ppPanel6.setPreferredSize(new Dimension(200, 5));
 
 		panCenter.add(ppPanel);
 		panCenter.add(this.mapSizeLabel);
@@ -117,10 +117,8 @@ public class ManagePan {
 		panCenter.add(this.ppSizeMap);
 		panCenter.add(ppPanel1);
 		panCenter.add(this.automaticButton);
-
 		panCenter.add(this.manualButton);
 		panCenter.add(ppPanel2);
-
 		panCenter.add(this.speedSimulationLabel);
 		panCenter.add(this.speedSimulationTextField);
 		panCenter.add(ppPanel3);
@@ -136,6 +134,5 @@ public class ManagePan {
 		container.add(panCenter, BorderLayout.CENTER);
 
 		return container;
-
 	}
 }
