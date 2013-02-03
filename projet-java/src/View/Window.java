@@ -53,7 +53,7 @@ public class Window extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public Window() {
-		this.setTitle("Projet Java");
+		this.setTitle("Simulateur de vie d'une forêt");
 		this.setSize(1024, 768);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
