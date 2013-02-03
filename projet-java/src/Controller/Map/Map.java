@@ -4,6 +4,12 @@ import javax.swing.JPanel;
 
 import View.Window;
 
+/**
+ * @see
+ * 
+ * @author david
+ * 
+ */
 public class Map implements MapSoft {
 
 	private Window window;

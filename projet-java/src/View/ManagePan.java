@@ -14,35 +14,52 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @since Classe pour la création du panel gestion de simulation
+ * @author david, agathe, alexandre
+ */
 public class ManagePan {
 
-	private Font police = new Font("Arial", Font.BOLD, 16);
-	private Font police2 = new Font("Arial", Font.PLAIN, 14);
+	private Font title = new Font("Arial", Font.BOLD, 16);
+	private Font police = new Font("Arial", Font.PLAIN, 14);
 
+	// champs réglage taille carte
 	private JLabel mapSizeLabel = new JLabel("Taille carte :");
 	private JTextField heightMap = new JTextField("100");
 	private JLabel xSize = new JLabel("x");
 	private JTextField widthMap = new JTextField("100");
 	private JLabel ppSizeMap = new JLabel("");
 
+	// boutons automatique et manuel
 	private JButton automaticButton = new JButton("Automatique");
 	private JButton manualButton = new JButton("Manuel");
 
+	// champs vitesse de pas en automatique
 	private JLabel speedSimulationLabel = new JLabel("Vitesse de simulation :");
 	private JTextField speedSimulationTextField = new JTextField("40");
 	private JLabel ppSpeedSimulation = new JLabel("");
 
+	// champs nombre de pas en automatique
 	private JLabel numberCycleSimulationLabel = new JLabel("Nombre de pas :");
 	private JTextField numberCycleSimulationTextField = new JTextField("50");
 	private JLabel ppNumberCycleSimulation = new JLabel("");
 
 	private JButton startButton = new JButton("Démarrer");
 
-	public ManagePan() {
+	// instance de la classe Window
+	private Window window;
 
+	// récupère l'instance de la classe Window
+	public ManagePan(final Window window) {
+		this.window = window;
 	}
 
+	/**
+	 * @since initilise un panel gestion de simulation
+	 * @return {@link JPanel}
+	 */
 	public JPanel initManagePan() {
+		// création d'un panel principal
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
 
@@ -50,7 +67,7 @@ public class ManagePan {
 		panCenter.setBackground(Color.WHITE);
 		panCenter.setBorder(BorderFactory.createTitledBorder(null,
 				"Gestions simulations", TitledBorder.DEFAULT_JUSTIFICATION,
-				TitledBorder.DEFAULT_POSITION, this.police));
+				TitledBorder.DEFAULT_POSITION, this.title));
 
 		this.heightMap.setPreferredSize(new Dimension(40, 20));
 		this.widthMap.setPreferredSize(new Dimension(40, 20));
@@ -61,10 +78,11 @@ public class ManagePan {
 				20));
 		this.startButton.setPreferredSize(new Dimension(110, 25));
 
-		this.mapSizeLabel.setFont(this.police2);
-		this.speedSimulationLabel.setFont(this.police2);
-		this.numberCycleSimulationLabel.setFont(this.police2);
+		this.mapSizeLabel.setFont(this.police);
+		this.speedSimulationLabel.setFont(this.police);
+		this.numberCycleSimulationLabel.setFont(this.police);
 
+		// ecoute bouton manuel
 		this.manualButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
@@ -73,6 +91,7 @@ public class ManagePan {
 			}
 		});
 
+		// ecoute bouton automatique
 		this.automaticButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
