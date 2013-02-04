@@ -1,5 +1,7 @@
 package Controller.Map;
 
+import java.util.List;
+
 import javax.swing.JPanel;
 
 public interface MapSoft {
@@ -8,6 +10,6 @@ public interface MapSoft {
 	void saveMap();
 	void exportMap();
 	JPanel importMap();
-	JPanel initMap(JPanel panWest);
+	List<List<Element>> initMap();
 
 }
