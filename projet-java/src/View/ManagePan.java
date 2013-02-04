@@ -55,10 +55,11 @@ public class ManagePan {
 	}
 
 	/**
+	 * @param mapPan
 	 * @since initilise un panel gestion de simulation
 	 * @return {@link JPanel}
 	 */
-	public JPanel initManagePan() {
+	public JPanel initManagePan(final MapPan mapPan) {
 		// création d'un panel principal
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
@@ -97,6 +98,14 @@ public class ManagePan {
 			public void actionPerformed(final ActionEvent e) {
 				ManagePan.this.speedSimulationTextField.setEnabled(true);
 				ManagePan.this.numberCycleSimulationTextField.setEnabled(true);
+			}
+		});
+
+		this.startButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(final ActionEvent e) {
+				mapPan.updateMapPan();
 			}
 		});
 

@@ -46,6 +46,7 @@ public class Window extends JFrame {
 	private final JPanel panEast = new JPanel();
 	private final JPanel panSouth = new JPanel();
 	private final JPanel panNorth = new JPanel();
+	private JPanel panWestCenter = new JPanel();
 
 	private MapPan mapPan = null;
 
@@ -78,12 +79,12 @@ public class Window extends JFrame {
 		this.menuBar.add(this.modeMenu);
 
 		// Création panel map
-		JPanel panWestCenter = new JPanel();
-		MapPan mapPan = new MapPan(Window.this);
-		panWestCenter = mapPan.initMapPan();
 
-		this.panWest.add(panWestCenter, BorderLayout.NORTH);
-		this.panWest.setPreferredSize(new Dimension(700, 600));
+		MapPan mapPan = new MapPan(Window.this);
+		this.panWestCenter = mapPan.initMapPan();
+		Window.this.colorPan(208, 239, 114);
+
+		this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
 
 		// Écoute du bouton quitter
 		this.exitButton.addActionListener(new ActionListener() {
@@ -168,7 +169,7 @@ public class Window extends JFrame {
 		JPanel panCenterCenter = new JPanel();
 		panCenterCenter.setBackground(Color.WHITE);
 		ManagePan managePan = new ManagePan(Window.this);
-		panCenterCenter = managePan.initManagePan();
+		panCenterCenter = managePan.initManagePan(mapPan);
 
 		// ajout des panels dans le panelCenter
 		this.panCenter.add(panCenterNorth, BorderLayout.NORTH);
@@ -203,7 +204,8 @@ public class Window extends JFrame {
 		Window.this.panEast.setBackground(new Color(color1, color2, color3));
 		Window.this.panNorth.setBackground(new Color(color1, color2, color3));
 		Window.this.panCenter.setBackground(new Color(color1, color2, color3));
-
+		Window.this.panWestCenter.setBackground(new Color(color1, color2,
+				color3));
 	}
 
 	/**

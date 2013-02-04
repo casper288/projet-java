@@ -8,12 +8,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class MapPan extends JPanel {
 
 	private Window window;
 	private int width;
 	private int height;
+	private JButton buttonTab[][] = new JButton[101][101];
 
 	public MapPan(final Window window) {
 		this.window = window;
@@ -21,7 +24,8 @@ public class MapPan extends JPanel {
 
 	public JPanel initMapPan() {
 
-		JPanel container = new JPanel(new GridLayout(70, 70));
+		JPanel container = new JPanel(new GridLayout(100, 100));
+		container.setPreferredSize(new Dimension(700, 680));
 
 		// container.setLayout(new GridLayout(10, 10));
 		// container.setBorder(this.getBorder());
@@ -35,7 +39,7 @@ public class MapPan extends JPanel {
 		// container.add(ptest);
 		// }
 		// container.setBorder(blackline);
-		// this.window.colorPan(208, 239, 114);
+
 		//
 		// // !!!!!!!!!!!!!!!!!!!!!!!!!
 		// // !!!création objet map !!!
@@ -46,23 +50,28 @@ public class MapPan extends JPanel {
 		//
 		// // setLayout(new MapPan();
 
-		int Tab[][] = new int[52][52];
-		JButton buttonTab[][] = new JButton[52][52];
+		// int Tab[][] = new int[52][52];
 
-		container.setLayout(new GridLayout(50, 50));
-
-		for (int i = 0; i < 52; i++) {
-			for (int j = 0; j < 52; j++) {
-				Tab[i][j] = 0;
-			}
-		}
+		// for (int i = 0; i < 52; i++) {
+		// for (int j = 0; j < 52; j++) {
+		// Tab[i][j] = 0;
+		// }
+		// }
 
 		// Ajout des boutons
-		for (int i = 1; i < 51; i++) {
-			for (int j = 1; j < 51; j++) {
-				buttonTab[i][j] = new JButton(/* new ImageIcon("toto.gif" ) */);
-				buttonTab[i][j].setPreferredSize(new Dimension(20, 20));
-				buttonTab[i][j].addActionListener(new ActionListener() {
+		for (int i = 1; i < 101; i++) {
+			for (int j = 1; j < 101; j++) {
+				this.buttonTab[i][j] = new JButton(/*
+													 * new ImageIcon("toto.gif"
+													 * )
+													 */);
+
+				this.buttonTab[i][j].setBackground(Color.white);
+
+				Border thickBorder = new LineBorder(Color.gray, 1);
+				this.buttonTab[i][j].setBorder(thickBorder);
+
+				this.buttonTab[i][j].addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(final ActionEvent e) {
 						((JButton) e.getSource()).setBackground(Color.GREEN);
@@ -70,13 +79,13 @@ public class MapPan extends JPanel {
 
 					}
 				});
-				container.add(buttonTab[i][j]);
+				container.add(this.buttonTab[i][j]);
 			}// fin for j
 		}// fin for i
 
 		return container;
 	}
 	public void updateMapPan() {
-
+		this.buttonTab[10][10].setBackground(Color.black);
 	}
 }
