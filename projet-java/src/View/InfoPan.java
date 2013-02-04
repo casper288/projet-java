@@ -81,7 +81,7 @@ public class InfoPan {
 		panCenter.setBackground(Color.WHITE);
 		JPanel panWest = new JPanel();
 		panWest.setBackground(Color.white);
-		panWest.setPreferredSize(new Dimension(30, 360));
+		panWest.setPreferredSize(new Dimension(20, 360));
 
 		container.setBackground(Color.WHITE);
 		container.setPreferredSize(new Dimension(0, 360));
@@ -137,6 +137,7 @@ public class InfoPan {
 			public void actionPerformed(final ActionEvent e) {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
+				InfoPan.this.window.setElementSelect("youngPlant");
 			}
 		});
 
@@ -146,6 +147,7 @@ public class InfoPan {
 			public void actionPerformed(final ActionEvent e) {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
+				InfoPan.this.window.setElementSelect("plant");
 
 			}
 		});
@@ -156,6 +158,7 @@ public class InfoPan {
 			public void actionPerformed(final ActionEvent e) {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
+				InfoPan.this.window.setElementSelect("tree");
 
 			}
 		});
@@ -166,6 +169,7 @@ public class InfoPan {
 			public void actionPerformed(final ActionEvent e) {
 				InfoPan.this.window.colorPan(255, 176, 176);
 				InfoPan.this.window.setMode("fire");
+				InfoPan.this.window.setElementSelect("fire");
 			}
 		});
 
@@ -173,7 +177,7 @@ public class InfoPan {
 		this.voidButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				// TODO Auto-generated method stub
+				InfoPan.this.window.setElementSelect("void");
 
 			}
 		});
@@ -184,6 +188,7 @@ public class InfoPan {
 			public void actionPerformed(final ActionEvent e) {
 				InfoPan.this.window.colorPan(255, 220, 98);
 				InfoPan.this.window.setMode("insect");
+				InfoPan.this.window.setElementSelect("insect");
 			}
 		});
 

@@ -16,7 +16,7 @@ public class MapPan extends JPanel {
 	private Window window;
 	private int width;
 	private int height;
-	private JButton buttonTab[][] = new JButton[101][101];
+	private JButton buttonTab[][] = new JButton[51][51];
 
 	public MapPan(final Window window) {
 		this.window = window;
@@ -24,7 +24,7 @@ public class MapPan extends JPanel {
 
 	public JPanel initMapPan() {
 
-		JPanel container = new JPanel(new GridLayout(100, 100));
+		JPanel container = new JPanel(new GridLayout(50, 50));
 		container.setPreferredSize(new Dimension(700, 680));
 
 		// container.setLayout(new GridLayout(10, 10));
@@ -59,8 +59,8 @@ public class MapPan extends JPanel {
 		// }
 
 		// Ajout des boutons
-		for (int i = 1; i < 101; i++) {
-			for (int j = 1; j < 101; j++) {
+		for (int i = 1; i < 51; i++) {
+			for (int j = 1; j < 51; j++) {
 				this.buttonTab[i][j] = new JButton(/*
 													 * new ImageIcon("toto.gif"
 													 * )
@@ -74,7 +74,25 @@ public class MapPan extends JPanel {
 				this.buttonTab[i][j].addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(final ActionEvent e) {
-						((JButton) e.getSource()).setBackground(Color.GREEN);
+						if (MapPan.this.window.getElementSelect() == "youngPlant") {
+							((JButton) e.getSource()).setBackground(new Color(
+									199, 236, 85));
+						} else if (MapPan.this.window.getElementSelect() == "plant") {
+							((JButton) e.getSource()).setBackground(new Color(
+									33, 173, 75));
+						} else if (MapPan.this.window.getElementSelect() == "tree") {
+							((JButton) e.getSource()).setBackground(new Color(
+									24, 126, 55));
+						} else if (MapPan.this.window.getElementSelect() == "fire") {
+							((JButton) e.getSource()).setBackground(Color.RED);
+						} else if (MapPan.this.window.getElementSelect() == "insect") {
+							((JButton) e.getSource())
+									.setBackground(Color.ORANGE);
+						} else {
+							((JButton) e.getSource())
+									.setBackground(Color.WHITE);
+						}
+
 						System.out.println("click!");
 
 					}

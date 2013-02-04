@@ -22,6 +22,7 @@ public class Window extends JFrame {
 
 	// sauvegarde du mode sélectionné.
 	private String mode = "forest";
+	private String elementSelect = "youngPlant";
 
 	// menu du programme
 	private final JMenuBar menuBar = new JMenuBar();
@@ -223,4 +224,13 @@ public class Window extends JFrame {
 	public void setMode(final String mode) {
 		this.mode = mode;
 	}
+
+	public String getElementSelect() {
+		return this.elementSelect;
+	}
+
+	public void setElementSelect(final String elementSelect) {
+		this.elementSelect = elementSelect;
+	}
+
 }
