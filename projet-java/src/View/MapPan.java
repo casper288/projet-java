@@ -17,6 +17,7 @@ public class MapPan extends JPanel {
 	private int width;
 	private int height;
 	private JButton buttonTab[][] = new JButton[51][51];
+	private JPanel container = new JPanel(new GridLayout(50, 50));
 
 	public MapPan(final Window window) {
 		this.window = window;
@@ -24,9 +25,9 @@ public class MapPan extends JPanel {
 
 	public JPanel initMapPan() {
 
-		JPanel container = new JPanel(new GridLayout(50, 50));
-		container.setPreferredSize(new Dimension(700, 680));
-
+		this.container.setPreferredSize(new Dimension(700, 680));
+		this.container.setBackground(new Color(208, 239, 114));
+		this.window.colorPan(208, 239, 114);
 		// container.setLayout(new GridLayout(10, 10));
 		// container.setBorder(this.getBorder());
 		// container.setPreferredSize(new Dimension(680, 690));
@@ -97,12 +98,13 @@ public class MapPan extends JPanel {
 
 					}
 				});
-				container.add(this.buttonTab[i][j]);
+				this.container.add(this.buttonTab[i][j]);
 			}// fin for j
 		}// fin for i
 
-		return container;
+		return this.container;
 	}
+
 	public void updateMapPan() {
 		this.buttonTab[10][10].setBackground(Color.black);
 	}

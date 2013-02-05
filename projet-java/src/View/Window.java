@@ -25,28 +25,27 @@ public class Window extends JFrame {
 	private String elementSelect = "youngPlant";
 
 	// menu du programme
-	private final JMenuBar menuBar = new JMenuBar();
-	private final JMenu fileMenu = new JMenu("Fichier");
-	private final JMenuItem newMapButton = new JMenuItem("Nouvelle Carte");
-	private final JMenu saveMenu = new JMenu("Sauvegarder");
-	private final JMenuItem saveBddButton = new JMenuItem("Base de données");
-	private final JMenuItem saveCsvButton = new JMenuItem("CSV");
-	private final JMenuItem importButton = new JMenuItem("Importer carte");
-	private final JMenuItem exitButton = new JMenuItem("Quitter");
-	private final JMenu modeMenu = new JMenu("Mode simulation");
-	private final JMenuItem forestModeButton = new JMenuItem("Forêt");
-	private final JMenuItem fireModeButton = new JMenuItem("Feu de forêt");
-	private final JMenuItem insectModeButton = new JMenuItem(
-			"Invasion d'insectes");
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu fileMenu = new JMenu("Fichier");
+	private JMenuItem newMapButton = new JMenuItem("Nouvelle Carte");
+	private JMenu saveMenu = new JMenu("Sauvegarder");
+	private JMenuItem saveBddButton = new JMenuItem("Base de données");
+	private JMenuItem saveCsvButton = new JMenuItem("CSV");
+	private JMenuItem importButton = new JMenuItem("Importer carte");
+	private JMenuItem exitButton = new JMenuItem("Quitter");
+	private JMenu modeMenu = new JMenu("Mode simulation");
+	private JMenuItem forestModeButton = new JMenuItem("Forêt");
+	private JMenuItem fireModeButton = new JMenuItem("Feu de forêt");
+	private JMenuItem insectModeButton = new JMenuItem("Invasion d'insectes");
 
-	private final JMenuItem helpMenu = new JMenuItem("Aide");
-	private final JMenuItem aboutButton = new JMenuItem("À propos");
+	private JMenuItem helpMenu = new JMenuItem("Aide");
+	private JMenuItem aboutButton = new JMenuItem("À propos");
 
-	private final JPanel panCenter = new JPanel();
+	private JPanel panCenter = new JPanel();
 	private JPanel panWest = new JPanel();
-	private final JPanel panEast = new JPanel();
-	private final JPanel panSouth = new JPanel();
-	private final JPanel panNorth = new JPanel();
+	private JPanel panEast = new JPanel();
+	private JPanel panSouth = new JPanel();
+	private JPanel panNorth = new JPanel();
 	private JPanel panWestCenter = new JPanel();
 
 	private MapPan mapPan = null;
@@ -63,6 +62,7 @@ public class Window extends JFrame {
 	}
 
 	private void initComponent() {
+		// container principal
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
 
@@ -80,11 +80,8 @@ public class Window extends JFrame {
 		this.menuBar.add(this.modeMenu);
 
 		// Création panel map
-
-		MapPan mapPan = new MapPan(Window.this);
-		this.panWestCenter = mapPan.initMapPan();
-		Window.this.colorPan(208, 239, 114);
-
+		this.mapPan = new MapPan(Window.this);
+		this.panWestCenter = this.mapPan.initMapPan();
 		this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
 
 		// Écoute du bouton quitter
@@ -101,6 +98,7 @@ public class Window extends JFrame {
 			public void actionPerformed(final ActionEvent arg0) {
 				Window.this.colorPan(208, 239, 114);
 				Window.this.setMode("forest");
+				Window.this.setElementSelect("young");
 
 			}
 		});
@@ -111,6 +109,7 @@ public class Window extends JFrame {
 			public void actionPerformed(final ActionEvent e) {
 				Window.this.colorPan(255, 176, 176);
 				Window.this.setMode("fire");
+				Window.this.setElementSelect("fire");
 
 			}
 		});
@@ -128,8 +127,8 @@ public class Window extends JFrame {
 		this.newMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
-				MapPan mapPan = new MapPan(Window.this);
-				Window.this.panWest = mapPan.initMapPan();
+				Window.this.panWestCenter = Window.this.mapPan.initMapPan();
+
 			}
 		});
 
@@ -158,7 +157,7 @@ public class Window extends JFrame {
 		});
 
 		this.panCenter.setLayout(new BorderLayout());
-		this.panCenter.setPreferredSize(new Dimension(0, 0));
+		// this.panCenter.setPreferredSize(new Dimension(0, 0));
 
 		// Création du panel informations
 		JPanel panCenterNorth = new JPanel();
@@ -170,7 +169,7 @@ public class Window extends JFrame {
 		JPanel panCenterCenter = new JPanel();
 		panCenterCenter.setBackground(Color.WHITE);
 		ManagePan managePan = new ManagePan(Window.this);
-		panCenterCenter = managePan.initManagePan(mapPan);
+		panCenterCenter = managePan.initManagePan(this.mapPan);
 
 		// ajout des panels dans le panelCenter
 		this.panCenter.add(panCenterNorth, BorderLayout.NORTH);
