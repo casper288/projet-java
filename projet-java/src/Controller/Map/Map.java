@@ -70,6 +70,9 @@ public class Map implements MapSoft {
 	// }
 	// System.out.println(" ");
 	// }
+	this.window.getMapPan().updateMapPan(this.tab);
+	// appel de la fonction qui va colorier et interagir avec le tableau de
+	// bouton
 
     }
 

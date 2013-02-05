@@ -71,7 +71,7 @@ public class InfoPan {
     }
 
     /**
-     * @since initilise un panel information
+     * @since initialise un panel information
      * @return {@link JPanel}
      */
     public JPanel initInfoPan() {

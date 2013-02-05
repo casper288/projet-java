@@ -109,7 +109,7 @@ public class ManagePan {
 
 	    @Override
 	    public void actionPerformed(final ActionEvent e) {
-		mapPan.updateMapPan();
+		// mapPan.updateMapPan();
 	    }
 	});
 

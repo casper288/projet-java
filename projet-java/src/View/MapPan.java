@@ -71,60 +71,42 @@ public class MapPan extends JPanel {
 		    @Override
 		    public void actionPerformed(final ActionEvent e) {
 			if (MapPan.this.window.getElementSelect() == "youngPlant") {
-			    ((JButton) e.getSource()).setBackground(new Color(
-				    199, 236, 85));
 
-			    // System.out.println("YoungPlant!");
 			    map.updateMap(y, x, 1);
 			    // méthode pour update le tableau int avec un type 1
 
 			} else if (MapPan.this.window.getElementSelect() == "plant") {
-			    ((JButton) e.getSource()).setBackground(new Color(
-				    33, 173, 75));
 
-			    // System.out.println("plant!");
 			    map.updateMap(y, x, 2);
 			    // méthode pour update le tableau int avec un type 2
 
 			} else if (MapPan.this.window.getElementSelect() == "tree") {
-			    ((JButton) e.getSource()).setBackground(new Color(
-				    24, 126, 55));
 
-			    // System.out.println("tree!");
 			    map.updateMap(y, x, 3);
 			    // méthode pour update le tableau int avec un type 3
 
 			} else if (MapPan.this.window.getElementSelect() == "fire") {
-			    ((JButton) e.getSource()).setBackground(Color.RED);
 
-			    // System.out.println("fire!");
 			    map.updateMap(y, x, 4);
 			    // méthode pour update le tableau int avec un type 4
 
 			} else if (MapPan.this.window.getElementSelect() == "insect") {
-			    ((JButton) e.getSource())
-				    .setBackground(Color.ORANGE);
 
-			    // System.out.println("insect!");
 			    map.updateMap(y, x, 5);
 			    // méthode pour update le tableau int avec un type 5
 
 			} else if (MapPan.this.window.getElementSelect() == "cinder") {
-			    ((JButton) e.getSource()).setBackground(Color.GRAY);
 
-			    // System.out.println("cinder!");
 			    map.updateMap(y, x, 6);
 			    // méthode pour update le tableau int avec un type 6
 
 			} else {
-			    ((JButton) e.getSource())
-				    .setBackground(Color.WHITE);
 
-			    // System.out.println("WHITE!");
 			    map.updateMap(y, x, 0);
 			    // méthode pour update le tableau int avec un type 0
 			}
-			// System.out.println("click!");
+			// appel de la fonction de mise a jour du panel a chaque
+			// clic
 			map.statsMap();
 		    }
 		});
@@ -137,14 +119,54 @@ public class MapPan extends JPanel {
 	return this.container;
     }
 
-    public void updateMapPan() {
-	this.buttonTab[10][10].setBackground(Color.black);
-	// test du bouton "lancer" , cela permet de modifier un element du
-	// tableau graphique
+    public void updateMapPan(final int tabUpdate[][]) {
+	// méthode pour récupérer le tableau en int
+	// et la lit et assigne une couleur sur le tableau
+	// de bouton en fonction du type qui est renseigné
+	// sur le tableau de int
 
-	// map.updateMap(10, 10, 0);
-	// pour modifier la tableau INT mais il manque
-	// l'instanciation sur cet exemple
+	int type = 10;
+	for (int i = 1; i < this.height; i++) {
+	    for (int j = 1; j < this.width; j++) {
+
+		type = tabUpdate[i][j];
+
+		switch (type) {
+		case 1:
+		    // jeune pousse
+		    this.buttonTab[i][j].setBackground(new Color(199, 236, 85));
+		    break;
+		case 2:
+		    // arbuste
+		    this.buttonTab[i][j].setBackground(new Color(33, 173, 75));
+		    break;
+		case 3:
+		    // arbre
+		    this.buttonTab[i][j].setBackground(new Color(24, 126, 55));
+		    break;
+		case 4:
+		    // feu
+		    this.buttonTab[i][j].setBackground(Color.RED);
+		    break;
+		case 5:
+		    // insecte
+		    this.buttonTab[i][j].setBackground(Color.ORANGE);
+		    break;
+		case 6:
+		    // cendre
+		    this.buttonTab[i][j].setBackground(Color.GRAY);
+		    break;
+		case 0:
+		    // vide
+		    this.buttonTab[i][j].setBackground(Color.WHITE);
+		    break;
+		default:
+		    break;
+		}
+		type = 10;// pour réinitialiser la variable
+	    }
+
+	}
     }
 
     public void statsMapPan() {

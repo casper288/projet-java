@@ -124,6 +124,7 @@ public class Window extends JFrame {
 	    public void actionPerformed(final ActionEvent arg0) {
 		Window.this.colorPan(255, 220, 98);
 		Window.this.setMode("insect");
+		Window.this.setElementSelect("insect");
 	    }
 	});
 
@@ -242,6 +243,10 @@ public class Window extends JFrame {
 
     public void setInfoPan(final InfoPan infoPan) {
 	this.infoPan = infoPan;
+    }
+
+    public MapPan getMapPan() {
+	return this.mapPan;
     }
 
 }
