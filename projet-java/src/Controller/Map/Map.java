@@ -14,7 +14,6 @@ public class Map implements MapSoft {
     private int width = 0; // largeur en case et pas en pixel
     private final int total = this.height * this.width; // Nombre total de case
     private int tab[][];
-    @SuppressWarnings("unused")
     private final Window window;
 
     public Map(final Window window) {
@@ -81,14 +80,55 @@ public class Map implements MapSoft {
     }
 
     @Override
-    public void stats() {
-	// TODO Stub de la méthode généré automatiquement
+    public void statsMap() {
+	// méthode de comptage des elements sur le tableau int
+	// grace a un for qui parcoure le tableau et un switch
+	// qui incrémente un autre tableau en fonction des paramètres
+	// reçus dans le tableau précédent
+	int typeTab[] = new int[7];
+	int type = 10;
+	for (int i = 1; i < this.height; i++) {
+	    for (int j = 1; j < this.width; j++) {
 
+		type = this.tab[i][j];
+
+		switch (type) {
+		case 1:
+		    typeTab[1] = typeTab[1] + 1;
+		    break;
+		case 2:
+		    typeTab[2] = typeTab[2] + 1;
+		    break;
+		case 3:
+		    typeTab[3] = typeTab[3] + 1;
+		    break;
+		case 4:
+		    typeTab[4] = typeTab[4] + 1;
+		    break;
+		case 5:
+		    typeTab[5] = typeTab[5] + 1;
+		    break;
+		case 6:
+		    typeTab[6] = typeTab[6] + 1;
+		    break;
+		case 0:
+		    typeTab[0] = typeTab[0] + 1;
+		    break;
+		default:
+		    break;
+		}
+		type = 10;
+	    }
+
+	}
+	this.window.getInfoPan().setNumberStat(typeTab);
+	// on envoie le tout sur la méthode de mise a jour des
+	// labels dans le classe infoPan
     }
 
     @Override
     public void importMap() {
-	// TODO Auto-generated method stub
+	// TODO Stub de la méthode généré automatiquement
 
     }
 

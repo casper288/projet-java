@@ -50,6 +50,7 @@ public class Window extends JFrame {
     private final JPanel panSouth = new JPanel();
     private final JPanel panNorth = new JPanel();
     private JPanel panWestCenter = new JPanel();
+    private InfoPan infoPan = new InfoPan(Window.this);
 
     private MapPan mapPan = null;
 
@@ -165,8 +166,8 @@ public class Window extends JFrame {
 	// Création du panel informations
 	JPanel panCenterNorth = new JPanel();
 	panCenterNorth.setBackground(Color.WHITE);
-	InfoPan infoPan = new InfoPan(Window.this);
-	panCenterNorth = infoPan.initInfoPan();
+
+	panCenterNorth = this.infoPan.initInfoPan();
 
 	// Création panel gestion simulation
 	JPanel panCenterCenter = new JPanel();
@@ -233,6 +234,14 @@ public class Window extends JFrame {
 
     public void setElementSelect(final String elementSelect) {
 	this.elementSelect = elementSelect;
+    }
+
+    public InfoPan getInfoPan() {
+	return this.infoPan;
+    }
+
+    public void setInfoPan(final InfoPan infoPan) {
+	this.infoPan = infoPan;
     }
 
 }

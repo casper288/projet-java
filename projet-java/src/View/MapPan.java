@@ -125,6 +125,7 @@ public class MapPan extends JPanel {
 			    // méthode pour update le tableau int avec un type 0
 			}
 			// System.out.println("click!");
+			map.statsMap();
 		    }
 		});
 		this.container.add(this.buttonTab[i][j]);
@@ -144,6 +145,9 @@ public class MapPan extends JPanel {
 	// map.updateMap(10, 10, 0);
 	// pour modifier la tableau INT mais il manque
 	// l'instanciation sur cet exemple
+    }
+
+    public void statsMapPan() {
 
     }
 }

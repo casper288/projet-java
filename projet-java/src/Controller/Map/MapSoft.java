@@ -1,6 +1,5 @@
 package Controller.Map;
 
-
 public interface MapSoft {
     void updateMap(int y, int x, int type);
 
@@ -10,7 +9,7 @@ public interface MapSoft {
 
     void exportMap();
 
-    void stats();
+    void statsMap();
 
     void importMap();
 
