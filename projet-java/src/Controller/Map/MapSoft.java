@@ -1,18 +1,20 @@
 package Controller.Map;
 
 public interface MapSoft {
-    void updateMap(int y, int x, int type);
+	void updateMap(int y, int x, int type);
 
-    void updateTime(int y, int x, int type);
+	void updateMapOnly();
 
-    void updateElement();
+	void updateTime(int y, int x, int type);
 
-    void saveMap();
+	void updateElement();
 
-    void exportMap();
+	void saveMap();
 
-    void statsMap();
+	void exportMap();
 
-    void importMap();
+	void statsMap();
+
+	void importMap();
 
 }

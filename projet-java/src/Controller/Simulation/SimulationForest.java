@@ -1,6 +1,6 @@
 package Controller.Simulation;
 
-import javax.swing.JButton;
+import View.Window;
 
 public class SimulationForest implements Simulation {
 
@@ -10,11 +10,14 @@ public class SimulationForest implements Simulation {
 
 	private int height;
 	private int width;
+	private Window window;
 
-	public SimulationForest(final JButton tab[][], final int board[][],
-			final int boardState[][]) {
-		this.board = board;
-		this.boardState = boardState;
+	public SimulationForest(final Window window) {
+		this.window = window;
+		this.height = window.getMapPan().getMap().getHeight();
+		this.width = window.getMapPan().getMap().getWidth();
+		this.board = window.getMapPan().getMap().getTab();
+		this.boardState = window.getMapPan().getMap().getTabTime();
 	}
 
 	@Override
@@ -66,6 +69,9 @@ public class SimulationForest implements Simulation {
 				this.board = this.board2;
 			}
 		}
+
+		this.window.getMapPan().getMap().setTab(this.board);
+		this.window.getMapPan().getMap().updateMapOnly();
 	}
 
 	public int countNeighbors(final int i, final int j, final int type) {
