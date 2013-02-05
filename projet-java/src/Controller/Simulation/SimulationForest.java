@@ -2,7 +2,7 @@ package Controller.Simulation;
 
 import View.Window;
 
-public class SimulationForest implements Simulation {
+public class SimulationForest extends Thread implements Simulation {
 
 	private int board[][];
 	private int board2[][];
@@ -21,30 +21,34 @@ public class SimulationForest implements Simulation {
 	}
 
 	@Override
-	public void playSimulation() {
+	public void run() {
 
 		this.board2 = this.board;
 
-		for (int i = 1; i < this.height; i++) {
+		for (int i = 1; i < (this.height - 1); i++) {
 
-			for (int j = 1; j < this.width; j++) {
+			for (int j = 1; j < (this.width - 1); j++) {
 
 				if (this.board[i][j] == 0) {
 
 					if (this.countNeighbors(i, j, 3) >= 2) {
 						this.board2[i][j] = 1;
+						continue;
 					}
 					if (this.countNeighbors(i, j, 2) >= 3) {
 						this.board2[i][j] = 1;
+						continue;
 					}
 					if ((this.countNeighbors(i, j, 3) >= 1)
 							&& (this.countNeighbors(i, j, 2) >= 2)) {
 						this.board2[i][j] = 1;
+						continue;
 					}
 
 					else {
 						System.out.println("Je suis vide");
 					}
+					continue;
 				}
 
 				else if (this.board[i][j] == 1) {
@@ -53,23 +57,28 @@ public class SimulationForest implements Simulation {
 
 					if ((numberTree + numberPlant) <= 3) {
 						this.board2[i][j] = 2;
+						continue;
 					}
+					continue;
 				}
 
 				else if (this.board[i][j] == 2) {
 
 					if (this.boardState[i][j] == 0) {
 						this.boardState[i][j]++;
+						continue;
 					} else if (this.boardState[i][j] == 1) {
 						// this.tableauEtat[i][j]--;
 						this.board2[i][j] = 3;
+						continue;
 					}
+					continue;
 				}
 
-				this.board = this.board2;
 			}
 		}
 
+		this.board = this.board2;
 		this.window.getMapPan().getMap().setTab(this.board);
 		this.window.getMapPan().getMap().updateMapOnly();
 	}
@@ -107,8 +116,16 @@ public class SimulationForest implements Simulation {
 		}
 		if (this.board[i - 1][j] == type) {
 			numberNeighbors++;
+		} else {
+
 		}
 		return numberNeighbors;
+
+	}
+
+	@Override
+	public void playSimulation() {
+		this.start();
 
 	}
 }

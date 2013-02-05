@@ -115,8 +115,10 @@ public class ManagePan {
 				if (ManagePan.this.window.getMode() == "forest") {
 					SimulationForest simulationForest = new SimulationForest(
 							ManagePan.this.window);
+					simulationForest.playSimulation();
 				}
 			}
+
 		});
 
 		JPanel ppPanel = new JPanel();
