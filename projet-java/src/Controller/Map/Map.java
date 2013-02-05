@@ -14,6 +14,7 @@ public class Map implements MapSoft {
     private int width = 0; // largeur en case et pas en pixel
     private final int total = this.height * this.width; // Nombre total de case
     private int tab[][];
+    private int tabTime[][];
     private final Window window;
 
     public Map(final Window window) {
@@ -30,10 +31,21 @@ public class Map implements MapSoft {
 	int tableau[][] = new int[height][width]; // On crée un tableau
 	this.setTab(tableau); // que l'on va ensuite assigner au tableau tab qui
 			      // est en local
-
+	int tableauTime[][] = new int[height][width]; // On crée un tableau pour
+						      // le temps
+	this.setTabTime(tableauTime); // que l'on va ensuite assigner au tableau
+				      // tabTime qui
+	// est en local
 	for (int i = 1; i < height; i++) { // On construit le tableau en hauteur
 	    for (int j = 1; j < width; j++) { // puis en largeur
 		this.tab[i][j] = 0; // en lui assignant une valeur de 0
+	    }
+	}
+
+	for (int i = 1; i < height; i++) { // On construit le tableau en hauteur
+					   // Pour temps
+	    for (int j = 1; j < width; j++) { // puis en largeur
+		this.tabTime[i][j] = 0; // en lui assignant une valeur de 0
 	    }
 	}
 
@@ -55,6 +67,29 @@ public class Map implements MapSoft {
 	// for (int i = 1; i < this.height; i++) {
 	// for (int j = 1; j < this.width; j++) {
 	// System.out.print(this.tab[i][j] + " ");
+	// }
+	// System.out.println(" ");
+	// }
+
+    }
+
+    @Override
+    public void updateTime(final int y, final int x, final int type) {
+	// méthode pour mettre a jour la carte int, a chaque clic sur une case
+	// de mapPan, cette méthode
+	// est appelée avec un type numérique en paramètre
+
+	this.tabTime[y][x] = type; // on récupère le tableau local, on lui donne
+				   // une
+				   // valeur TYPE et les Y et X permettent de se
+				   // positionner dans le tableau
+	this.setTab(this.tab); // on met a jour le tableau local grace a un set
+			       // sur le tableau local tab
+
+	/* fonction d'affichage du tableau en mode console */
+	// for (int i = 1; i < this.height; i++) {
+	// for (int j = 1; j < this.width; j++) {
+	// System.out.print(this.tabTime[i][j] + " ");
 	// }
 	// System.out.println(" ");
 	// }
@@ -158,6 +193,14 @@ public class Map implements MapSoft {
 
     public void setTab(final int[][] tableau) {
 	this.tab = tableau;
+    }
+
+    public int[][] getTabTime() {
+	return this.tabTime;
+    }
+
+    public void setTabTime(final int[][] tabTime) {
+	this.tabTime = tabTime;
     }
 
 }
