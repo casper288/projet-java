@@ -1,7 +1,5 @@
 package Controller.Map;
 
-import javax.swing.JPanel;
-
 import View.Window;
 
 /**
@@ -83,9 +81,15 @@ public class Map implements MapSoft {
     }
 
     @Override
-    public JPanel importMap() {
+    public void stats() {
+	// TODO Stub de la méthode généré automatiquement
+
+    }
+
+    @Override
+    public void importMap() {
 	// TODO Auto-generated method stub
-	return null;
+
     }
 
     public int getHeight() {

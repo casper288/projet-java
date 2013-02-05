@@ -1,6 +1,5 @@
 package Controller.Map;
 
-import javax.swing.JPanel;
 
 public interface MapSoft {
     void updateMap(int y, int x, int type);
@@ -11,6 +10,8 @@ public interface MapSoft {
 
     void exportMap();
 
-    JPanel importMap();
+    void stats();
+
+    void importMap();
 
 }
