@@ -14,9 +14,9 @@ public class SimulationForest extends Thread implements Simulation {
 
 	public SimulationForest(final Window window) {
 		this.window = window;
-		this.height = window.getMapPan().getMap().getHeight();
-		this.width = window.getMapPan().getMap().getWidth();
-		this.board = window.getMapPan().getMap().getTab();
+		this.height = window.getMapPan().getMap().getHeight();// 21
+		this.width = window.getMapPan().getMap().getWidth();// 21
+		this.board = window.getMapPan().getMap().getTab();// [21][21]
 		this.boardState = window.getMapPan().getMap().getTabTime();
 	}
 
@@ -25,9 +25,9 @@ public class SimulationForest extends Thread implements Simulation {
 
 		this.board2 = this.board;
 
-		for (int i = 1; i < (this.height - 1); i++) {
+		for (int i = 2; i < (this.height - 1); i++) {
 
-			for (int j = 1; j < (this.width - 1); j++) {
+			for (int j = 2; j < (this.width - 1); j++) {
 
 				if (this.board[i][j] == 0) {
 
@@ -82,7 +82,6 @@ public class SimulationForest extends Thread implements Simulation {
 		this.window.getMapPan().getMap().setTab(this.board);
 		this.window.getMapPan().getMap().updateMapOnly();
 	}
-
 	public int countNeighbors(final int i, final int j, final int type) {
 
 		int numberNeighbors = 0;
