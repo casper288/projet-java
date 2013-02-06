@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -88,6 +90,37 @@ public class ManagePan {
 		this.mapSizeLabel.setFont(this.police);
 		this.speedSimulationLabel.setFont(this.police);
 		this.numberCycleSimulationLabel.setFont(this.police);
+
+		this.heightMap.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(final KeyEvent arg0) {
+				String content = ManagePan.this.heightMap.getText();
+				if ("".equals(content)) {
+					return;
+				}
+				if (content.matches("\\d{1,3}")) {
+
+				} else {
+					ManagePan.this.heightMap.setText("");
+					// JOptionPane.showMessageDialog(null, "Numero invalide !",
+					// "Attention", JOptionPane.WARNING_MESSAGE);
+				}
+
+			}
+
+			@Override
+			public void keyPressed(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		// ecoute bouton manuel
 		this.manualButton.addActionListener(new ActionListener() {

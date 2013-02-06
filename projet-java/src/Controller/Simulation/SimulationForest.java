@@ -46,7 +46,7 @@ public class SimulationForest extends Thread implements Simulation {
 					}
 
 					else {
-						System.out.println("Je suis vide");
+						// System.out.println("Je suis vide");
 					}
 					continue;
 				}
@@ -68,7 +68,7 @@ public class SimulationForest extends Thread implements Simulation {
 						this.boardState[i][j]++;
 						continue;
 					} else if (this.boardState[i][j] == 1) {
-						// this.tableauEtat[i][j]--;
+						this.boardState[i][j]--;
 						this.board2[i][j] = 3;
 						continue;
 					}

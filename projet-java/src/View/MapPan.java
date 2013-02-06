@@ -20,8 +20,8 @@ public class MapPan extends JPanel {
      */
 	private static final long serialVersionUID = 4624592622103159699L;
 	private final Window window;
-	private final int height = 10 + 1;
-	private final int width = 10 + 1;
+	private final int height = 50 + 1;
+	private final int width = 50 + 1;
 	private Map map = null;
 	private final JButton buttonTab[][] = new JButton[this.height + 1][this.width + 1];
 	private final JPanel container = new JPanel(new GridLayout(this.height,
@@ -121,36 +121,39 @@ public class MapPan extends JPanel {
 				type = tabUpdate[i][j];
 
 				switch (type) {
-				case 1:
-					// jeune pousse
-					this.buttonTab[i][j].setBackground(new Color(199, 236, 85));
-					break;
-				case 2:
-					// arbuste
-					this.buttonTab[i][j].setBackground(new Color(33, 173, 75));
-					break;
-				case 3:
-					// arbre
-					this.buttonTab[i][j].setBackground(new Color(24, 126, 55));
-					break;
-				case 4:
-					// feu
-					this.buttonTab[i][j].setBackground(Color.RED);
-					break;
-				case 5:
-					// insecte
-					this.buttonTab[i][j].setBackground(Color.ORANGE);
-					break;
-				case 6:
-					// cendre
-					this.buttonTab[i][j].setBackground(Color.GRAY);
-					break;
-				case 0:
-					// vide
-					this.buttonTab[i][j].setBackground(Color.WHITE);
-					break;
-				default:
-					break;
+					case 1 :
+						// jeune pousse
+						this.buttonTab[i][j].setBackground(new Color(199, 236,
+								85));
+						break;
+					case 2 :
+						// arbuste
+						this.buttonTab[i][j].setBackground(new Color(33, 173,
+								75));
+						break;
+					case 3 :
+						// arbre
+						this.buttonTab[i][j].setBackground(new Color(24, 126,
+								55));
+						break;
+					case 4 :
+						// feu
+						this.buttonTab[i][j].setBackground(Color.RED);
+						break;
+					case 5 :
+						// insecte
+						this.buttonTab[i][j].setBackground(Color.ORANGE);
+						break;
+					case 6 :
+						// cendre
+						this.buttonTab[i][j].setBackground(Color.GRAY);
+						break;
+					case 0 :
+						// vide
+						this.buttonTab[i][j].setBackground(Color.WHITE);
+						break;
+					default :
+						break;
 				}
 				type = 10;// pour réinitialiser la variable
 			}

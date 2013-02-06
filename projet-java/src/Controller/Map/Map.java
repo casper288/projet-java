@@ -83,6 +83,12 @@ public class Map implements MapSoft {
 			}
 			System.out.println(" ");
 		}
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
 		this.window.getMapPan().updateMapPan(this.tab);
 		// appel de la fonction qui va colorier et interagir avec le tableau de
 		// bouton
@@ -144,29 +150,29 @@ public class Map implements MapSoft {
 				type = this.tab[i][j];
 
 				switch (type) {
-				case 1:
-					typeTab[1] = typeTab[1] + 1;
-					break;
-				case 2:
-					typeTab[2] = typeTab[2] + 1;
-					break;
-				case 3:
-					typeTab[3] = typeTab[3] + 1;
-					break;
-				case 4:
-					typeTab[4] = typeTab[4] + 1;
-					break;
-				case 5:
-					typeTab[5] = typeTab[5] + 1;
-					break;
-				case 6:
-					typeTab[6] = typeTab[6] + 1;
-					break;
-				case 0:
-					typeTab[0] = typeTab[0] + 1;
-					break;
-				default:
-					break;
+					case 1 :
+						typeTab[1] = typeTab[1] + 1;
+						break;
+					case 2 :
+						typeTab[2] = typeTab[2] + 1;
+						break;
+					case 3 :
+						typeTab[3] = typeTab[3] + 1;
+						break;
+					case 4 :
+						typeTab[4] = typeTab[4] + 1;
+						break;
+					case 5 :
+						typeTab[5] = typeTab[5] + 1;
+						break;
+					case 6 :
+						typeTab[6] = typeTab[6] + 1;
+						break;
+					case 0 :
+						typeTab[0] = typeTab[0] + 1;
+						break;
+					default :
+						break;
 				}
 				type = 10;
 			}
