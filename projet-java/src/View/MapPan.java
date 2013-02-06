@@ -20,8 +20,8 @@ public class MapPan extends JPanel {
      */
 	private static final long serialVersionUID = 4624592622103159699L;
 	private final Window window;
-	private final int height = 30;
-	private final int width = 30;
+	private final int height = 10 + 1;
+	private final int width = 10 + 1;
 	private Map map = null;
 	private final JButton buttonTab[][] = new JButton[this.height + 1][this.width + 1];
 	private final JPanel container = new JPanel(new GridLayout(this.height,
@@ -40,8 +40,8 @@ public class MapPan extends JPanel {
 		this.window.colorPan(208, 239, 114);
 
 		// Ajout des boutons
-		for (int i = 1; i < (this.height + 1); i++) {
-			for (int j = 1; j < (this.width + 1); j++) {
+		for (int i = 1; i < (this.height); i++) {
+			for (int j = 1; j < (this.width); j++) {
 				this.buttonTab[i][j] = new JButton(/*
 													 * new ImageIcon("toto.gif"
 													 * )
@@ -115,45 +115,42 @@ public class MapPan extends JPanel {
 		// sur le tableau de int
 
 		int type = 10;
-		for (int i = 1; i < (this.height + 1); i++) {
-			for (int j = 1; j < (this.width + 1); j++) {
+		for (int i = 1; i < (this.height); i++) {
+			for (int j = 1; j < (this.width); j++) {
 
 				type = tabUpdate[i][j];
 
 				switch (type) {
-					case 1 :
-						// jeune pousse
-						this.buttonTab[i][j].setBackground(new Color(199, 236,
-								85));
-						break;
-					case 2 :
-						// arbuste
-						this.buttonTab[i][j].setBackground(new Color(33, 173,
-								75));
-						break;
-					case 3 :
-						// arbre
-						this.buttonTab[i][j].setBackground(new Color(24, 126,
-								55));
-						break;
-					case 4 :
-						// feu
-						this.buttonTab[i][j].setBackground(Color.RED);
-						break;
-					case 5 :
-						// insecte
-						this.buttonTab[i][j].setBackground(Color.ORANGE);
-						break;
-					case 6 :
-						// cendre
-						this.buttonTab[i][j].setBackground(Color.GRAY);
-						break;
-					case 0 :
-						// vide
-						this.buttonTab[i][j].setBackground(Color.WHITE);
-						break;
-					default :
-						break;
+				case 1:
+					// jeune pousse
+					this.buttonTab[i][j].setBackground(new Color(199, 236, 85));
+					break;
+				case 2:
+					// arbuste
+					this.buttonTab[i][j].setBackground(new Color(33, 173, 75));
+					break;
+				case 3:
+					// arbre
+					this.buttonTab[i][j].setBackground(new Color(24, 126, 55));
+					break;
+				case 4:
+					// feu
+					this.buttonTab[i][j].setBackground(Color.RED);
+					break;
+				case 5:
+					// insecte
+					this.buttonTab[i][j].setBackground(Color.ORANGE);
+					break;
+				case 6:
+					// cendre
+					this.buttonTab[i][j].setBackground(Color.GRAY);
+					break;
+				case 0:
+					// vide
+					this.buttonTab[i][j].setBackground(Color.WHITE);
+					break;
+				default:
+					break;
 				}
 				type = 10;// pour réinitialiser la variable
 			}

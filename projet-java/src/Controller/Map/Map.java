@@ -41,6 +41,19 @@ public class Map implements MapSoft {
 				this.tab[i][j] = 0; // en lui assignant une valeur de 0
 			}
 		}
+		for (int i = height - 1; i < height; i++) { // On construit le tableau
+													// en hauteur
+			for (int j = 1; j < width; j++) { // puis en largeur
+				this.tab[i][j] = 9; // en lui assignant une valeur de 0
+			}
+		}
+
+		for (int i = 1; i < height; i++) { // On construit le tableau
+			// en hauteur
+			for (int j = width - 1; j < width; j++) { // puis en largeur
+				this.tab[i][j] = 9; // en lui assignant une valeur de 0
+			}
+		}
 
 		for (int i = 1; i < height; i++) { // On construit le tableau en hauteur
 			// Pour temps
@@ -64,12 +77,12 @@ public class Map implements MapSoft {
 		// sur le tableau local tab
 
 		/* fonction d'affichage du tableau en mode console */
-		// for (int i = 1; i < this.height; i++) {
-		// for (int j = 1; j < this.width; j++) {
-		// System.out.print(this.tab[i][j] + " ");
-		// }
-		// System.out.println(" ");
-		// }
+		for (int i = 1; i < this.height; i++) {
+			for (int j = 1; j < this.width; j++) {
+				System.out.print(this.tab[i][j] + " ");
+			}
+			System.out.println(" ");
+		}
 		this.window.getMapPan().updateMapPan(this.tab);
 		// appel de la fonction qui va colorier et interagir avec le tableau de
 		// bouton
