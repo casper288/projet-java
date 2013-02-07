@@ -10,6 +10,7 @@ public class SimulationForest extends Thread implements Simulation {
 
 	private int height;
 	private int width;
+
 	private Window window;
 
 	public SimulationForest(final Window window) {
@@ -23,64 +24,83 @@ public class SimulationForest extends Thread implements Simulation {
 	@Override
 	public void run() {
 
-		this.board2 = this.board;
+		this.window.getManagePan().getStartButton().setEnabled(false);
+		try {
 
-		for (int i = 1; i < (this.height - 1); i++) {
+			for (int l = 0; l < Integer.parseInt(this.window.getManagePan()
+					.getNumberCycleSimulationTextField().getText()); l++) {
 
-			for (int j = 1; j < (this.width - 1); j++) {
+				// Exécution de la tâche
+				this.board2 = this.board;
 
-				if (this.board[i][j] == 0) {
+				for (int i = 1; i < (this.height - 1); i++) {
 
-					if (this.countNeighbors(i, j, 3) >= 2) {
-						this.board2[i][j] = 1;
-						continue;
+					for (int j = 1; j < (this.width - 1); j++) {
+
+						if (this.board[i][j] == 0) {
+
+							if (this.countNeighbors(i, j, 3) >= 2) {
+								this.board2[i][j] = 1;
+								continue;
+							}
+							if (this.countNeighbors(i, j, 2) >= 3) {
+								this.board2[i][j] = 1;
+								continue;
+							}
+							if ((this.countNeighbors(i, j, 3) >= 1)
+									&& (this.countNeighbors(i, j, 2) >= 2)) {
+								this.board2[i][j] = 1;
+								continue;
+							}
+
+							else {
+								// System.out.println("Je suis vide");
+							}
+							continue;
+						}
+
+						else if (this.board[i][j] == 1) {
+							int numberTree = this.countNeighbors(i, j, 3);
+							int numberPlant = this.countNeighbors(i, j, 2);
+
+							if ((numberTree + numberPlant) <= 3) {
+								this.board2[i][j] = 2;
+								continue;
+							}
+							continue;
+						}
+
+						else if (this.board[i][j] == 2) {
+
+							if (this.boardState[i][j] == 0) {
+								this.boardState[i][j]++;
+								continue;
+							} else if (this.boardState[i][j] == 1) {
+								this.boardState[i][j]--;
+								this.board2[i][j] = 3;
+								continue;
+							}
+							continue;
+						}
+
 					}
-					if (this.countNeighbors(i, j, 2) >= 3) {
-						this.board2[i][j] = 1;
-						continue;
-					}
-					if ((this.countNeighbors(i, j, 3) >= 1)
-							&& (this.countNeighbors(i, j, 2) >= 2)) {
-						this.board2[i][j] = 1;
-						continue;
-					}
-
-					else {
-						// System.out.println("Je suis vide");
-					}
-					continue;
 				}
 
-				else if (this.board[i][j] == 1) {
-					int numberTree = this.countNeighbors(i, j, 3);
-					int numberPlant = this.countNeighbors(i, j, 2);
+				this.board = this.board2;
+				this.window.getMapPan().getMap().setTab(this.board);
+				this.window.getMapPan().getMap().updateMapOnly();
 
-					if ((numberTree + numberPlant) <= 3) {
-						this.board2[i][j] = 2;
-						continue;
-					}
-					continue;
-				}
+				int second = Integer.parseInt(this.window.getManagePan()
+						.getSpeedSimulationTextField().getText());
 
-				else if (this.board[i][j] == 2) {
-
-					if (this.boardState[i][j] == 0) {
-						this.boardState[i][j]++;
-						continue;
-					} else if (this.boardState[i][j] == 1) {
-						this.boardState[i][j]--;
-						this.board2[i][j] = 3;
-						continue;
-					}
-					continue;
-				}
-
+				Thread.sleep(second); // En pause pour deux secondes
+				this.window.getMapPan().getMap().statsMap();
 			}
-		}
 
-		this.board = this.board2;
-		this.window.getMapPan().getMap().setTab(this.board);
-		this.window.getMapPan().getMap().updateMapOnly();
+		} catch (InterruptedException exception) {
+		}
+		this.window.getManagePan().getStartButton().setEnabled(true);
+
 	}
 
 	public int countNeighbors(final int i, final int j, final int type) {
@@ -125,7 +145,13 @@ public class SimulationForest extends Thread implements Simulation {
 
 	@Override
 	public void playSimulation() {
+
 		this.start();
 
 	}
+
+	public void stopSimulation() {
+
+	}
+
 }

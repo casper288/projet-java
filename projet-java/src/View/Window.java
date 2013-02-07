@@ -52,7 +52,16 @@ public class Window extends JFrame {
 	private JPanel panWestCenter = new JPanel();
 	private InfoPan infoPan = new InfoPan(Window.this);
 
+	public ManagePan getManagePan() {
+		return this.managePan;
+	}
+
+	public void setManagePan(final ManagePan managePan) {
+		this.managePan = managePan;
+	}
+
 	private MapPan mapPan = null;
+	private ManagePan managePan = new ManagePan(Window.this);
 
 	private static final long serialVersionUID = 1L;
 
@@ -179,8 +188,8 @@ public class Window extends JFrame {
 		// Création panel gestion simulation
 		JPanel panCenterCenter = new JPanel();
 		panCenterCenter.setBackground(Color.WHITE);
-		ManagePan managePan = new ManagePan(Window.this);
-		panCenterCenter = managePan.initManagePan(this.mapPan);
+
+		panCenterCenter = this.managePan.initManagePan(this.mapPan);
 
 		// ajout des panels dans le panelCenter
 		this.panCenter.add(panCenterNorth, BorderLayout.NORTH);

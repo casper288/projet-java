@@ -41,18 +41,37 @@ public class ManagePan {
 
 	// champs vitesse de pas en automatique
 	private final JLabel speedSimulationLabel = new JLabel(
-			"Vitesse de simulation :");
-	private final JTextField speedSimulationTextField = new JTextField("40");
+			"Temps d'un pas en milliseconde :");
+	private final JTextField speedSimulationTextField = new JTextField("1");
+
+	public JTextField getSpeedSimulationTextField() {
+		return this.speedSimulationTextField;
+	}
+
 	private final JLabel ppSpeedSimulation = new JLabel("");
 
 	// champs nombre de pas en automatique
 	private final JLabel numberCycleSimulationLabel = new JLabel(
 			"Nombre de pas :");
 	private final JTextField numberCycleSimulationTextField = new JTextField(
-			"50");
+			"10");
+
+	public JTextField getNumberCycleSimulationTextField() {
+		return this.numberCycleSimulationTextField;
+	}
+
 	private final JLabel ppNumberCycleSimulation = new JLabel("");
 
 	private final JButton startButton = new JButton("Démarrer");
+	private final JButton stopButton = new JButton("Stop");
+
+	public JButton getStopButton() {
+		return this.stopButton;
+	}
+
+	public JButton getStartButton() {
+		return this.startButton;
+	}
 
 	// instance de la classe Window
 	@SuppressWarnings("unused")
@@ -87,11 +106,80 @@ public class ManagePan {
 		this.numberCycleSimulationTextField.setPreferredSize(new Dimension(40,
 				20));
 		this.startButton.setPreferredSize(new Dimension(110, 25));
+		this.stopButton.setPreferredSize(new Dimension(60, 25));
 
 		this.mapSizeLabel.setFont(this.police);
 		this.speedSimulationLabel.setFont(this.police);
 		this.numberCycleSimulationLabel.setFont(this.police);
 
+		this.numberCycleSimulationLabel.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(final KeyEvent arg0) {
+				String content = ManagePan.this.numberCycleSimulationLabel
+						.getText();
+
+				if ("".equals(content)) {
+					return;
+				}
+				if (content.matches("\\d")) {
+
+				} else {
+					ManagePan.this.numberCycleSimulationLabel.setText("");
+					JOptionPane.showMessageDialog(null, "Numero invalide !",
+							"Attention", JOptionPane.WARNING_MESSAGE);
+				}
+
+			}
+
+			@Override
+			public void keyPressed(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		// action sur le Field speedSimulationTextField avec regex
+		this.speedSimulationTextField.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(final KeyEvent arg0) {
+				String content = ManagePan.this.speedSimulationTextField
+						.getText();
+
+				if ("".equals(content)) {
+					return;
+				}
+				if (content.matches("\\d{1,4}")) {
+
+				} else {
+					ManagePan.this.speedSimulationTextField.setText("");
+					JOptionPane.showMessageDialog(null, "Numero invalide !",
+							"Attention", JOptionPane.WARNING_MESSAGE);
+				}
+
+			}
+
+			@Override
+			public void keyPressed(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		// action sur le field pour changer taille map
 		this.heightMap.addKeyListener(new KeyListener() {
 
 			@Override
@@ -119,6 +207,16 @@ public class ManagePan {
 
 			@Override
 			public void keyPressed(final KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		// ecoute bouton stop
+		this.stopButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(final ActionEvent e) {
 				// TODO Auto-generated method stub
 
 			}
@@ -214,6 +312,7 @@ public class ManagePan {
 		panCenter.add(ppPanel4);
 		panCenter.add(ppPanel5);
 		panCenter.add(this.startButton);
+		panCenter.add(this.stopButton);
 
 		container.add(panCenter, BorderLayout.CENTER);
 
