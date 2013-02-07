@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -29,9 +30,9 @@ public class ManagePan {
 
 	// champs réglage taille carte
 	private final JLabel mapSizeLabel = new JLabel("Taille carte :");
-	private final JTextField heightMap = new JTextField("100");
+	private final JTextField heightMap = new JTextField("3");
 	private final JLabel xSize = new JLabel("x");
-	private final JTextField widthMap = new JTextField("100");
+	private final JTextField widthMap = new JTextField("3");
 	private final JLabel ppSizeMap = new JLabel("");
 
 	// boutons automatique et manuel
@@ -102,6 +103,7 @@ public class ManagePan {
 			@Override
 			public void keyReleased(final KeyEvent arg0) {
 				String content = ManagePan.this.heightMap.getText();
+
 				if ("".equals(content)) {
 					return;
 				}
@@ -109,8 +111,8 @@ public class ManagePan {
 
 				} else {
 					ManagePan.this.heightMap.setText("");
-					// JOptionPane.showMessageDialog(null, "Numero invalide !",
-					// "Attention", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Numero invalide !",
+							"Attention", JOptionPane.WARNING_MESSAGE);
 				}
 
 			}
@@ -128,6 +130,11 @@ public class ManagePan {
 			public void actionPerformed(final ActionEvent arg0) {
 				ManagePan.this.speedSimulationTextField.setEnabled(false);
 				ManagePan.this.numberCycleSimulationTextField.setEnabled(false);
+				ManagePan.this.manualButton.setBackground(Color.lightGray);
+				ManagePan.this.automaticButton.setBackground(new Color(218,
+						230, 242));
+				ManagePan.this.numberCycleSimulationTextField.setText("1");
+				ManagePan.this.speedSimulationTextField.setText("1");
 			}
 		});
 
@@ -137,6 +144,10 @@ public class ManagePan {
 			public void actionPerformed(final ActionEvent e) {
 				ManagePan.this.speedSimulationTextField.setEnabled(true);
 				ManagePan.this.numberCycleSimulationTextField.setEnabled(true);
+				ManagePan.this.automaticButton.setBackground(Color.lightGray);
+				ManagePan.this.manualButton.setBackground(new Color(218, 230,
+						242));
+
 			}
 		});
 
