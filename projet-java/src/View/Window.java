@@ -54,15 +54,6 @@ public class Window extends JFrame {
 	private final JPanel panNorth = new JPanel();
 	private JPanel panWestCenter = new JPanel();
 	private InfoPan infoPan = new InfoPan(Window.this);
-
-	public ManagePan getManagePan() {
-		return this.managePan;
-	}
-
-	public void setManagePan(final ManagePan managePan) {
-		this.managePan = managePan;
-	}
-
 	private MapPan mapPan = null;
 	private ManagePan managePan = new ManagePan(Window.this);
 
@@ -94,11 +85,6 @@ public class Window extends JFrame {
 		this.fileMenu.add(this.exitButton);
 		this.menuBar.add(this.fileMenu);
 		this.menuBar.add(this.modeMenu);
-
-		// Création panel map
-		this.mapPan = new MapPan(Window.this);
-		this.panWestCenter = this.mapPan.initMapPan();
-		this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
 
 		// Écoute du bouton quitter
 		this.exitButton.addActionListener(new ActionListener() {
@@ -144,11 +130,7 @@ public class Window extends JFrame {
 		this.newMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
-
 				Window.this.panWestCenter.removeAll();
-
-				Window.this.panWestCenter.revalidate();
-
 				Window.this.panWestCenter = Window.this.mapPan.initMapPan();
 				Window.this.panWestCenter.revalidate();
 
@@ -190,19 +172,21 @@ public class Window extends JFrame {
 			}
 		});
 
+		// Création panel map
+		this.mapPan = new MapPan(Window.this);
+		this.panWestCenter = this.mapPan.initMapPan();
+		this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
+
 		this.panCenter.setLayout(new BorderLayout());
-		// this.panCenter.setPreferredSize(new Dimension(0, 0));
 
 		// Création du panel informations
 		JPanel panCenterNorth = new JPanel();
 		panCenterNorth.setBackground(Color.WHITE);
-
 		panCenterNorth = this.infoPan.initInfoPan();
 
 		// Création panel gestion simulation
 		JPanel panCenterCenter = new JPanel();
 		panCenterCenter.setBackground(Color.WHITE);
-
 		panCenterCenter = this.managePan.initManagePan(this.mapPan);
 
 		// ajout des panels dans le panelCenter
@@ -242,18 +226,10 @@ public class Window extends JFrame {
 				color3));
 	}
 
-	/**
-	 * @since méthode pour récupérer le mode (forest, fire, insect)
-	 * @return {@link String}
-	 */
 	public String getMode() {
 		return this.mode;
 	}
 
-	/**
-	 * @since méthode pour changer le mode (forest, fire, insect)
-	 * @param mode
-	 */
 	public void setMode(final String mode) {
 		this.mode = mode;
 	}
@@ -276,6 +252,14 @@ public class Window extends JFrame {
 
 	public MapPan getMapPan() {
 		return this.mapPan;
+	}
+
+	public ManagePan getManagePan() {
+		return this.managePan;
+	}
+
+	public void setManagePan(final ManagePan managePan) {
+		this.managePan = managePan;
 	}
 
 }

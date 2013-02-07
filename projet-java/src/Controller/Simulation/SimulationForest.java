@@ -10,6 +10,7 @@ public class SimulationForest extends Thread implements Simulation {
 
 	private int height;
 	private int width;
+	private boolean stop;
 
 	private Window window;
 
@@ -84,6 +85,9 @@ public class SimulationForest extends Thread implements Simulation {
 						}
 
 					}
+					if (this.stop == true) {
+						break;
+					}
 				}
 
 				this.board = this.board2;
@@ -95,6 +99,10 @@ public class SimulationForest extends Thread implements Simulation {
 
 				Thread.sleep(second); // En pause pour deux secondes
 				this.window.getMapPan().getMap().statsMap();
+
+				if (this.stop == true) {
+					break;
+				}
 			}
 
 		} catch (InterruptedException exception) {
@@ -103,6 +111,7 @@ public class SimulationForest extends Thread implements Simulation {
 
 	}
 
+	@Override
 	public int countNeighbors(final int i, final int j, final int type) {
 
 		int numberNeighbors = 0;
@@ -145,12 +154,14 @@ public class SimulationForest extends Thread implements Simulation {
 
 	@Override
 	public void playSimulation() {
-
+		this.stop = false;
 		this.start();
 
 	}
 
+	@Override
 	public void stopSimulation() {
+		this.stop = true;
 
 	}
 

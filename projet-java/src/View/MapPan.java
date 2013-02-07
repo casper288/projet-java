@@ -15,9 +15,6 @@ import Controller.Map.Map;
 
 public class MapPan extends JPanel {
 
-	/**
-     * 
-     */
 	private static final long serialVersionUID = 4624592622103159699L;
 	private final Window window;
 	private final int height = 50 + 1;
@@ -42,10 +39,7 @@ public class MapPan extends JPanel {
 		// Ajout des boutons
 		for (int i = 1; i < (this.height); i++) {
 			for (int j = 1; j < (this.width); j++) {
-				this.buttonTab[i][j] = new JButton(/*
-													 * new ImageIcon("toto.gif"
-													 * )
-													 */);
+				this.buttonTab[i][j] = new JButton(/* new ImageIcon("toto.gif") */);
 				final int y = i;// variable pour la méthode updateMap de la
 				// classe Map
 				final int x = j;// variable pour la méthode updateMap de la
@@ -157,7 +151,6 @@ public class MapPan extends JPanel {
 				}
 				type = 10;// pour réinitialiser la variable
 			}
-
 		}
 	}
 
@@ -168,5 +161,4 @@ public class MapPan extends JPanel {
 	public void statsMapPan() {
 
 	}
-
 }

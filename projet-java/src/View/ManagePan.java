@@ -17,7 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import Controller.Simulation.SimulationFire;
 import Controller.Simulation.SimulationForest;
+import Controller.Simulation.SimulationInsect;
 
 /**
  * @since Classe pour la création du panel gestion de simulation
@@ -43,11 +45,6 @@ public class ManagePan {
 	private final JLabel speedSimulationLabel = new JLabel(
 			"Temps d'un pas en milliseconde :");
 	private final JTextField speedSimulationTextField = new JTextField("1");
-
-	public JTextField getSpeedSimulationTextField() {
-		return this.speedSimulationTextField;
-	}
-
 	private final JLabel ppSpeedSimulation = new JLabel("");
 
 	// champs nombre de pas en automatique
@@ -55,23 +52,14 @@ public class ManagePan {
 			"Nombre de pas :");
 	private final JTextField numberCycleSimulationTextField = new JTextField(
 			"10");
-
-	public JTextField getNumberCycleSimulationTextField() {
-		return this.numberCycleSimulationTextField;
-	}
-
 	private final JLabel ppNumberCycleSimulation = new JLabel("");
 
 	private final JButton startButton = new JButton("Démarrer");
 	private final JButton stopButton = new JButton("Stop");
 
-	public JButton getStopButton() {
-		return this.stopButton;
-	}
-
-	public JButton getStartButton() {
-		return this.startButton;
-	}
+	SimulationInsect simulationInsect = null;
+	SimulationFire simulationFire = null;
+	SimulationForest simulationForest = null;
 
 	// instance de la classe Window
 	@SuppressWarnings("unused")
@@ -214,11 +202,29 @@ public class ManagePan {
 
 		// ecoute bouton stop
 		this.stopButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				// TODO Auto-generated method stub
 
+				switch (ManagePan.this.window.getMode()) {
+					case "forest" :
+						if (ManagePan.this.simulationForest != null) {
+							ManagePan.this.simulationForest.stopSimulation();
+						}
+						break;
+					case "fire" :
+						if (ManagePan.this.simulationFire != null) {
+							ManagePan.this.simulationFire.stopSimulation();
+						}
+						break;
+					case "insect" :
+						if (ManagePan.this.simulationInsect != null) {
+							ManagePan.this.simulationInsect.stopSimulation();
+						}
+						break;
+
+					default :
+						break;
+				}
 			}
 		});
 
@@ -254,13 +260,27 @@ public class ManagePan {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
 
-				if (ManagePan.this.window.getMode() == "forest") {
-					SimulationForest simulationForest = new SimulationForest(
-							ManagePan.this.window);
-					simulationForest.playSimulation();
+				switch (ManagePan.this.window.getMode()) {
+					case "forest" :
+						ManagePan.this.simulationForest = new SimulationForest(
+								ManagePan.this.window);
+						ManagePan.this.simulationForest.playSimulation();
+						break;
+					case "fire" :
+						ManagePan.this.simulationFire = new SimulationFire(
+								ManagePan.this.window);
+						ManagePan.this.simulationFire.playSimulation();
+						break;
+					case "insect" :
+						ManagePan.this.simulationInsect = new SimulationInsect(
+								ManagePan.this.window);
+						ManagePan.this.simulationInsect.playSimulation();
+						break;
+
+					default :
+						break;
 				}
 			}
-
 		});
 
 		JPanel ppPanel = new JPanel();
@@ -317,5 +337,21 @@ public class ManagePan {
 		container.add(panCenter, BorderLayout.CENTER);
 
 		return container;
+	}
+
+	public JTextField getSpeedSimulationTextField() {
+		return this.speedSimulationTextField;
+	}
+
+	public JTextField getNumberCycleSimulationTextField() {
+		return this.numberCycleSimulationTextField;
+	}
+
+	public JButton getStopButton() {
+		return this.stopButton;
+	}
+
+	public JButton getStartButton() {
+		return this.startButton;
 	}
 }
