@@ -78,14 +78,6 @@ public class Map implements MapSoft {
 		this.setTab(this.tab); // on met a jour le tableau local grace a un set
 		// sur le tableau local tab
 
-		/* fonction d'affichage du tableau en mode console */
-		for (int i = 1; i < this.height; i++) {
-			for (int j = 1; j < this.width; j++) {
-				System.out.print(this.tab[i][j] + " ");
-			}
-			System.out.println(" ");
-		}
-
 		this.window.getMapPan().updateMapPan(this.tab);
 		// appel de la fonction qui va colorier et interagir avec le tableau de
 		// bouton
@@ -104,14 +96,6 @@ public class Map implements MapSoft {
 		// positionner dans le tableau
 		this.setTab(this.tab); // on met a jour le tableau local grace a un set
 		// sur le tableau local tab
-
-		/* fonction d'affichage du tableau en mode console */
-		// for (int i = 1; i < this.height; i++) {
-		// for (int j = 1; j < this.width; j++) {
-		// System.out.print(this.tabTime[i][j] + " ");
-		// }
-		// System.out.println(" ");
-		// }
 
 	}
 

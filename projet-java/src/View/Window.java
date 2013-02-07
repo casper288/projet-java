@@ -5,12 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
+import Model.MapModel;
 
 /**
  * @since Classe de la fenêtre principale dans laquelle on instance le menu et
@@ -156,7 +159,18 @@ public class Window extends JFrame {
 		this.saveBddButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
+				MapModel mapmodel = new MapModel(Window.this.mapPan.getMap());
+				// on envoie l'instance actuelle de map dans MapModel pour
+				// pouvoir récupérer le tableau
 
+				try {
+					mapmodel.saveMap();// appel de la méthode pour enregistrer
+					// le tableau en cours dans la base de
+					// données
+				} catch (SQLException e) {
+					// TODO Bloc catch généré automatiquement
+					e.printStackTrace();
+				}
 			}
 		});
 
