@@ -1,5 +1,7 @@
 package Controller.Map;
 
+import java.util.Arrays;
+
 import View.Window;
 
 /**
@@ -145,29 +147,29 @@ public class Map implements MapSoft {
 				type = this.tab[i][j];
 
 				switch (type) {
-				case 1:
-					typeTab[1] = typeTab[1] + 1;
-					break;
-				case 2:
-					typeTab[2] = typeTab[2] + 1;
-					break;
-				case 3:
-					typeTab[3] = typeTab[3] + 1;
-					break;
-				case 4:
-					typeTab[4] = typeTab[4] + 1;
-					break;
-				case 5:
-					typeTab[5] = typeTab[5] + 1;
-					break;
-				case 6:
-					typeTab[6] = typeTab[6] + 1;
-					break;
-				case 0:
-					typeTab[0] = typeTab[0] + 1;
-					break;
-				default:
-					break;
+					case 1 :
+						typeTab[1] = typeTab[1] + 1;
+						break;
+					case 2 :
+						typeTab[2] = typeTab[2] + 1;
+						break;
+					case 3 :
+						typeTab[3] = typeTab[3] + 1;
+						break;
+					case 4 :
+						typeTab[4] = typeTab[4] + 1;
+						break;
+					case 5 :
+						typeTab[5] = typeTab[5] + 1;
+						break;
+					case 6 :
+						typeTab[6] = typeTab[6] + 1;
+						break;
+					case 0 :
+						typeTab[0] = typeTab[0] + 1;
+						break;
+					default :
+						break;
 				}
 				type = 10;
 			}
@@ -226,4 +228,15 @@ public class Map implements MapSoft {
 
 	}
 
+	public String getTabOut() {
+		String tabtext = Arrays.deepToString(this.tab);
+		// sortie du tableau int en string avec les crochets et tout
+		return tabtext;
+	}
+
+	public String getTabTimeOut() {
+		String tabTimetext = Arrays.deepToString(this.tabTime);
+		// sortie du tableau int de temps en string avec les crochets et tout
+		return tabTimetext;
+	}
 }
