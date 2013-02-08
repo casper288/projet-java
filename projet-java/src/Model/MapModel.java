@@ -66,4 +66,26 @@ public class MapModel {
 		+ tab + "','" + tab1 + "','" + date + "')");
 	// execution de la requete d'insert de la carte en base de données
     }
+
+    public void updateSaveMap(final int id) throws SQLException {
+	SimpleDateFormat formater = null;
+	// initialisation de la variable de type Simple date format
+	Date aujourdhui = new Date();
+	// instance de la date
+	formater = new SimpleDateFormat("dd/MM/yy - hh:mm:ss");
+	// mise en format de la date
+
+	String tab = this.map.getTabOut(); // récupération du tableau int
+	String tab1 = this.map.getTabTimeOut();// récupération du tableau int de
+					       // temps
+	String date = formater.format(aujourdhui);// récupération de la date
+	this.dao.executeUpdate("UPDATE map SET TAB_TYPE = '" + tab
+		+ "',TAB_TIME = '" + tab1 + "' ,CUR_DATE = '" + date
+		+ "' WHERE ID = '" + id + "' ;");
+	// execution de la requete d'update de la carte en base de données
+    }
+
+    public void deleteMap(final int id) throws SQLException {
+	this.dao.executeUpdate("DELETE FROM map WHERE ID = '" + id + "';");
+    }
 }
