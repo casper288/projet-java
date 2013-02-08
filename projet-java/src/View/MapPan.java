@@ -17,23 +17,34 @@ public class MapPan extends JPanel {
 
 	private static final long serialVersionUID = 4624592622103159699L;
 	private final Window window;
-	private final int height = 50 + 1;
-	private final int width = 50 + 1;
+	private int height = 10 + 1;
+	private int width = 10 + 1;
 	private Map map = null;
-	private final JButton buttonTab[][] = new JButton[this.height + 1][this.width + 1];
-	private final JPanel container = new JPanel(new GridLayout(this.height,
-			this.width));
+	private JButton buttonTab[][] = null;
+	/*
+	 * private JPanel container = new JPanel(new GridLayout(this.height,
+	 * this.width));
+	 */
 
 	public MapPan(final Window window) {
 		this.window = window;
 	}
 
 	public JPanel initMapPan() {
+
+		this.height = Integer.parseInt(this.window.getManagePan().getSizeMap()
+				.getText()) + 1;
+		this.width = Integer.parseInt(this.window.getManagePan().getSizeMap()
+				.getText()) + 1;
+
+		this.buttonTab = new JButton[this.height + 1][this.width + 1];
+		JPanel container = new JPanel(new GridLayout(this.height, this.width));
+
 		this.map = new Map(this.window);
 		this.map.initMap(this.height + 1, this.width + 1);
 
-		this.container.setPreferredSize(new Dimension(700, 680));
-		this.container.setBackground(new Color(208, 239, 114));
+		container.setPreferredSize(new Dimension(700, 680));
+		container.setBackground(new Color(208, 239, 114));
 		this.window.colorPan(208, 239, 114);
 
 		// Ajout des boutons
@@ -93,13 +104,13 @@ public class MapPan extends JPanel {
 						MapPan.this.map.statsMap();
 					}
 				});
-				this.container.add(this.buttonTab[i][j]);
+				container.add(this.buttonTab[i][j]);
 			}
 			// fin for j
 		}
 		// fin for i
 
-		return this.container;
+		return container;
 	}
 
 	public void updateMapPan(final int tabUpdate[][]) {

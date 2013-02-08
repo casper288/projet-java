@@ -32,9 +32,9 @@ public class ManagePan {
 
 	// champs réglage taille carte
 	private final JLabel mapSizeLabel = new JLabel("Taille carte :");
-	private final JTextField heightMap = new JTextField("3");
+	private final JTextField sizeMap = new JTextField("10");
 	private final JLabel xSize = new JLabel("x");
-	private final JTextField widthMap = new JTextField("3");
+	private final JTextField widthMap = new JTextField("10");
 	private final JLabel ppSizeMap = new JLabel("");
 
 	// boutons automatique et manuel
@@ -43,7 +43,7 @@ public class ManagePan {
 
 	// champs vitesse de pas en automatique
 	private final JLabel speedSimulationLabel = new JLabel(
-			"Temps d'un pas en milliseconde :");
+			"Pas en milliseconde :");
 	private final JTextField speedSimulationTextField = new JTextField("1");
 	private final JLabel ppSpeedSimulation = new JLabel("");
 
@@ -57,9 +57,11 @@ public class ManagePan {
 	private final JButton startButton = new JButton("Démarrer");
 	private final JButton stopButton = new JButton("Stop");
 
-	SimulationInsect simulationInsect = null;
-	SimulationFire simulationFire = null;
-	SimulationForest simulationForest = null;
+	private SimulationInsect simulationInsect = null;
+	private SimulationFire simulationFire = null;
+	private SimulationForest simulationForest = null;
+
+	private boolean start = false;
 
 	// instance de la classe Window
 	@SuppressWarnings("unused")
@@ -86,15 +88,16 @@ public class ManagePan {
 				"Gestions simulations", TitledBorder.DEFAULT_JUSTIFICATION,
 				TitledBorder.DEFAULT_POSITION, this.title));
 
-		this.heightMap.setPreferredSize(new Dimension(40, 20));
+		this.sizeMap.setPreferredSize(new Dimension(40, 20));
 		this.widthMap.setPreferredSize(new Dimension(40, 20));
-		this.ppSizeMap.setPreferredSize(new Dimension(30, 20));
+		this.ppSizeMap.setPreferredSize(new Dimension(80, 20));
 		this.manualButton.setPreferredSize(new Dimension(110, 25));
 		this.speedSimulationTextField.setPreferredSize(new Dimension(40, 20));
 		this.numberCycleSimulationTextField.setPreferredSize(new Dimension(40,
 				20));
 		this.startButton.setPreferredSize(new Dimension(110, 25));
-		this.stopButton.setPreferredSize(new Dimension(60, 25));
+		this.stopButton.setPreferredSize(new Dimension(110, 25));
+		this.ppSpeedSimulation.setPreferredSize(new Dimension(6, 10));
 
 		this.mapSizeLabel.setFont(this.police);
 		this.speedSimulationLabel.setFont(this.police);
@@ -168,7 +171,7 @@ public class ManagePan {
 		});
 
 		// action sur le field pour changer taille map
-		this.heightMap.addKeyListener(new KeyListener() {
+		this.sizeMap.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(final KeyEvent arg0) {
@@ -178,21 +181,29 @@ public class ManagePan {
 
 			@Override
 			public void keyReleased(final KeyEvent arg0) {
-				String content = ManagePan.this.heightMap.getText();
+				String content = ManagePan.this.sizeMap.getText();
 
 				if ("".equals(content)) {
 					return;
 				}
-				if (content.matches("\\d{1,3}")) {
+				System.out.println(Integer.parseInt(content));
+				if (content.matches("\\d{1,3}")
+						&& (Integer.parseInt(content) <= 100)
+						&& (Integer.parseInt(content) > 0)) {
+
+					ManagePan.this.window.getPanWestCenter().removeAll();
+					ManagePan.this.window
+							.setPanWestCenter(ManagePan.this.window.getMapPan()
+									.initMapPan());
+					ManagePan.this.window.getPanWestCenter().revalidate();
 
 				} else {
-					ManagePan.this.heightMap.setText("");
+					ManagePan.this.sizeMap.setText("");
 					JOptionPane.showMessageDialog(null, "Numero invalide !",
 							"Attention", JOptionPane.WARNING_MESSAGE);
 				}
 
 			}
-
 			@Override
 			public void keyPressed(final KeyEvent arg0) {
 				// TODO Auto-generated method stub
@@ -259,6 +270,7 @@ public class ManagePan {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
+				ManagePan.this.startButton.setText("En cours");
 
 				switch (ManagePan.this.window.getMode()) {
 					case "forest" :
@@ -313,9 +325,8 @@ public class ManagePan {
 
 		panCenter.add(ppPanel);
 		panCenter.add(this.mapSizeLabel);
-		panCenter.add(this.heightMap);
-		panCenter.add(this.xSize);
-		panCenter.add(this.widthMap);
+		panCenter.add(this.sizeMap);
+
 		panCenter.add(this.ppSizeMap);
 		panCenter.add(ppPanel1);
 		panCenter.add(this.automaticButton);
@@ -353,5 +364,9 @@ public class ManagePan {
 
 	public JButton getStartButton() {
 		return this.startButton;
+	}
+
+	public JTextField getSizeMap() {
+		return this.sizeMap;
 	}
 }

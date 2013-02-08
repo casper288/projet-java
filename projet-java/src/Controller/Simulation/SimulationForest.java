@@ -20,19 +20,20 @@ public class SimulationForest extends Thread implements Simulation {
 		this.width = window.getMapPan().getMap().getWidth();// 21
 		this.board = window.getMapPan().getMap().getTab();// [21][21]
 		this.boardState = window.getMapPan().getMap().getTabTime();
+		this.board2 = new int[this.height][this.width];
 	}
 
 	@Override
 	public void run() {
 
-		this.window.getManagePan().getStartButton().setEnabled(false);
 		try {
 
 			for (int l = 0; l < Integer.parseInt(this.window.getManagePan()
 					.getNumberCycleSimulationTextField().getText()); l++) {
 
 				// Exécution de la tâche
-				this.board2 = this.board;
+				// this.board2 = this.board.clone();
+				this.copyTab();
 
 				for (int i = 1; i < (this.height - 1); i++) {
 
@@ -90,7 +91,9 @@ public class SimulationForest extends Thread implements Simulation {
 					}
 				}
 
-				this.board = this.board2;
+				System.out.println(this.board + " ------- " + this.board2);
+
+				this.board = this.board2.clone();
 				this.window.getMapPan().getMap().setTab(this.board);
 				this.window.getMapPan().getMap().updateMapOnly();
 
@@ -107,7 +110,8 @@ public class SimulationForest extends Thread implements Simulation {
 
 		} catch (InterruptedException exception) {
 		}
-		this.window.getManagePan().getStartButton().setEnabled(true);
+
+		this.stopSimulation();
 
 	}
 
@@ -155,6 +159,7 @@ public class SimulationForest extends Thread implements Simulation {
 	@Override
 	public void playSimulation() {
 		this.stop = false;
+
 		this.start();
 
 	}
@@ -162,6 +167,19 @@ public class SimulationForest extends Thread implements Simulation {
 	@Override
 	public void stopSimulation() {
 		this.stop = true;
+		this.window.getManagePan().getStartButton().setText("Démarrer");
+	}
+
+	public void copyTab() {
+
+		for (int i = 1; i < (this.height - 1); i++) {
+
+			for (int j = 1; j < (this.width - 1); j++) {
+
+				this.board2[i][j] = this.board[i][j];
+
+			}
+		}
 
 	}
 

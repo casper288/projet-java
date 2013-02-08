@@ -48,11 +48,12 @@ public class Window extends JFrame {
 	private final JMenuItem aboutButton = new JMenuItem("À propos");
 
 	private final JPanel panCenter = new JPanel();
-	private final JPanel panWest = new JPanel();
+	private JPanel panWest = new JPanel();
 	private final JPanel panEast = new JPanel();
 	private final JPanel panSouth = new JPanel();
 	private final JPanel panNorth = new JPanel();
 	private JPanel panWestCenter = new JPanel();
+
 	private InfoPan infoPan = new InfoPan(Window.this);
 	private MapPan mapPan = null;
 	private ManagePan managePan = new ManagePan(Window.this);
@@ -130,9 +131,18 @@ public class Window extends JFrame {
 		this.newMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
-				Window.this.panWestCenter.removeAll();
-				Window.this.panWestCenter = Window.this.mapPan.initMapPan();
-				Window.this.panWestCenter.revalidate();
+				// Window.this.panWest.removeAll();
+				// Window.this.panWestCenter = null;
+				// Window.this.panWest = new JPanel();
+				// Window.this.panWestCenter = Window.this.mapPan.initMapPan();
+				// MapPan mapPan = new MapPan(Window.this);
+				// Window.this.panWestCenter.revalidate();
+				// Window.this.panWestCenter.repaint();
+				// Window.this.panWest.add(Window.this.mapPan.initMapPan());
+				// Window.this.panWest.revalidate();
+				// Window.this.panWestCenter.repaint();
+
+				Window.this.repaint();
 
 			}
 		});
@@ -174,8 +184,10 @@ public class Window extends JFrame {
 
 		// Création panel map
 		this.mapPan = new MapPan(Window.this);
+
 		this.panWestCenter = this.mapPan.initMapPan();
-		this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
+		// this.panWest.add(this.panWestCenter, BorderLayout.NORTH);
+		this.panWest.add(this.mapPan.initMapPan(), BorderLayout.NORTH);
 
 		this.panCenter.setLayout(new BorderLayout());
 
@@ -208,7 +220,6 @@ public class Window extends JFrame {
 		this.setContentPane(container);
 		this.setJMenuBar(this.menuBar);
 	}
-
 	/**
 	 * @since méthode permettant de changer la couleur de la fenêtre du
 	 *        programme
@@ -254,12 +265,20 @@ public class Window extends JFrame {
 		return this.mapPan;
 	}
 
-	public ManagePan getManagePan() {
+	public synchronized ManagePan getManagePan() {
 		return this.managePan;
 	}
 
 	public void setManagePan(final ManagePan managePan) {
 		this.managePan = managePan;
+	}
+
+	public JPanel getPanWestCenter() {
+		return this.panWestCenter;
+	}
+
+	public void setPanWestCenter(final JPanel panWestCenter) {
+		this.panWestCenter = panWestCenter;
 	}
 
 }
