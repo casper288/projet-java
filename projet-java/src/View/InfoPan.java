@@ -221,15 +221,31 @@ public class InfoPan {
 		// méthode de mise a jour des label qui indiquent le nombre
 		// d'element sur le tableau, c'est la fonction statsMap qui
 		// envoie le nombre d'element via un tableau unidimensionel
+
+		double total = Integer.parseInt(this.window.getManagePan().getSizeMap()
+				.getText())
+				* Integer.parseInt(this.window.getManagePan().getSizeMap()
+						.getText());
+
+		double t1 = (tab[1] * 100) / total;
+		double t2 = (tab[2] * 100) / total;
+		double t3 = (tab[3] * 100) / total;
+		double t4 = (tab[4] * 100) / total;
+		double t5 = (tab[5] * 100) / total;
+		double t6 = (tab[6] * 100) / total;
+		double t0 = (tab[0] * 100) / total;
+
+		System.out.println(t0);
+
 		this.youngPlantLabel.setText("jeune(s) pousse(s) : "
-				+ Integer.toString(tab[1]));
-		this.plantLabel.setText("arbuste(s) : " + Integer.toString(tab[2]));
-		this.treeLabel.setText("arbre(s) : " + Integer.toString(tab[3]));
-		this.fireLabel.setText("arbre(s) en feu(x) : "
-				+ Integer.toString(tab[4]));
-		this.insectLabel.setText("arbre(s) infecté(s) : "
-				+ Integer.toString(tab[5]));
-		this.cinderLabel.setText("cendre(s) : " + Integer.toString(tab[6]));
-		this.voidLabel.setText("vide(s) : " + Integer.toString(tab[0]));
+				+ Double.toString(t1) + "%");
+		this.plantLabel.setText("arbuste(s) : " + Double.toString(t2) + "%");
+		this.treeLabel.setText("arbre(s) : " + Double.toString(t3) + "%");
+		this.fireLabel.setText("arbre(s) en feu(x) : " + Double.toString(t4)
+				+ "%");
+		this.insectLabel.setText("arbre(s) infecté(s) : " + Double.toString(t5)
+				+ "%");
+		this.cinderLabel.setText("cendre(s) : " + Double.toString(t6) + "%");
+		this.voidLabel.setText("vide(s) : " + Double.toString(t0) + "%");
 	}
 }
