@@ -44,7 +44,7 @@ public class MapModel {
 
     public ResultSet returnResultset() throws SQLException {
 
-	String query = "SELECT * FROM MAP";
+	String query = "SELECT ID, Cur_Date FROM MAP";
 	ResultSet resultSet = this.dao.executeQuery(query);
 	System.out.println(resultSet);// debug
 	return resultSet;
