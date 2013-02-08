@@ -91,7 +91,7 @@ public class SimulationForest extends Thread implements Simulation {
 					}
 				}
 
-				System.out.println(this.board + " ------- " + this.board2);
+				// System.out.println(this.board + " ------- " + this.board2);
 
 				this.board = this.board2.clone();
 				this.window.getMapPan().getMap().setTab(this.board);
