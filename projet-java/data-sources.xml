@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mysql5-1360227881001-438842781" provider="mysql" driver="mysql5" name="MySQL - jsimforest" create-date="1360227881001" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="127.0.0.1" port="3306" server="" database="jsimforest" url="jdbc:mysql://127.0.0.1:3306/jsimforest" user="root" type="dev"/>
+	</data-source>
+</data-sources>
