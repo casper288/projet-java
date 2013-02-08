@@ -88,4 +88,26 @@ public class MapModel {
     public void deleteMap(final int id) throws SQLException {
 	this.dao.executeUpdate("DELETE FROM map WHERE ID = '" + id + "';");
     }
+
+    public void loadMap(final int id) throws SQLException {
+	String query = "SELECT * FROM MAP WHERE ID = '" + id + "'";
+	ResultSet resultSet = this.dao.executeQuery(query);
+	while (resultSet.next()) {
+
+	    String var1 = resultSet.getString("TAB_TYPE");
+	    // String var2 = resultSet.getString("TAB_TIME");
+
+	    // System.out.println("" + var1 + " -- " + var2 + "");
+	    // simple fonction d'affichage de des données de la table MAP pour
+	    // le debug et les test
+	    // map.setTab();
+	    // map.setTabTime();
+
+	    String tab1 = var1.replace('[', '{');
+	    String tab = tab1.replace(']', '}');
+	    tab.split(",");
+	    System.out.println(tab);
+
+	}
+    }
 }

@@ -106,10 +106,15 @@ public class WindowBdd extends JFrame {
 	    @Override
 	    public void actionPerformed(final ActionEvent e) {
 		int ligneSelectionne = WindowBdd.this.table.getSelectedRow();
-		System.out.println(WindowBdd.this.table.getValueAt(
-			ligneSelectionne, 0));
-
-		// WindowBdd.this.dispose();
+		int id = (int) WindowBdd.this.table.getValueAt(
+			ligneSelectionne, 0);
+		try {
+		    mapModel.loadMap(id);
+		} catch (SQLException e1) {
+		    // TODO Bloc catch généré automatiquement
+		    e1.printStackTrace();
+		}
+		WindowBdd.this.dispose();
 	    }
 	});
 	panel.add(btnNewButton_1, "4, 6");
