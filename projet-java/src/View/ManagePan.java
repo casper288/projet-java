@@ -62,10 +62,10 @@ public class ManagePan {
     private SimulationFire simulationFire = null;
     private SimulationForest simulationForest = null;
 
+    @SuppressWarnings("unused")
     private final boolean start = false;
 
     // instance de la classe Window
-    @SuppressWarnings("unused")
     private final Window window;
 
     // récupère l'instance de la classe Window
