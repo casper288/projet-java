@@ -42,6 +42,14 @@ public class MapModel {
 
     }
 
+    public ResultSet returnResultset() throws SQLException {
+
+	String query = "SELECT * FROM MAP";
+	ResultSet resultSet = this.dao.executeQuery(query);
+	System.out.println(resultSet);// debug
+	return resultSet;
+    }
+
     public void saveMap() throws SQLException {
 	SimpleDateFormat formater = null;
 	// initialisation de la variable de type Simple date format
