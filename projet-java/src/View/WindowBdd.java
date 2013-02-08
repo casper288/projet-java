@@ -99,6 +99,21 @@ public class WindowBdd extends JFrame {
 		WindowBdd.this.dispose();
 	    }
 	});
+
+	JButton btnSauvegarderTest = new JButton("Sauvegarder - test");
+	btnSauvegarderTest.addActionListener(new ActionListener() {
+	    @Override
+	    public void actionPerformed(final ActionEvent arg0) {
+		try {
+		    mapModel.saveMap();
+		} catch (SQLException e) {
+		    // TODO Bloc catch généré automatiquement
+		    e.printStackTrace();
+		}
+		WindowBdd.this.dispose();
+	    }
+	});
+	panel.add(btnSauvegarderTest, "4, 2");
 	panel.add(btnNewButton, "4, 4");
 	// ///////////////////////////////////////////////////////////////////////////
 	JButton btnNewButton_1 = new JButton("Charger");

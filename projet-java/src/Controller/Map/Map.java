@@ -1,8 +1,8 @@
 package Controller.Map;
 
-import java.util.Arrays;
-
 import View.Window;
+
+import com.google.gson.Gson;
 
 /**
  * @see
@@ -82,6 +82,10 @@ public class Map implements MapSoft {
 	// appel de la fonction qui va colorier et interagir avec le tableau de
 	// bouton
 
+    }
+
+    public void updateAllMap() {
+	this.window.getMapPan().updateMapPan(this.tab);
     }
 
     @Override
@@ -213,14 +217,16 @@ public class Map implements MapSoft {
     }
 
     public String getTabOut() {
-	String tabtext = Arrays.deepToString(this.tab);
-	// sortie du tableau int en string avec les crochets et tout
-	return tabtext;
+	Gson gson = new Gson();
+	String json = gson.toJson(this.tab);
+
+	return json;
     }
 
     public String getTabTimeOut() {
-	String tabTimetext = Arrays.deepToString(this.tabTime);
-	// sortie du tableau int de temps en string avec les crochets et tout
-	return tabTimetext;
+	Gson gson = new Gson();
+	String json = gson.toJson(this.tabTime);
+
+	return json;
     }
 }

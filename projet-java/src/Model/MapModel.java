@@ -7,6 +7,8 @@ import java.util.Date;
 
 import Controller.Map.Map;
 
+import com.google.gson.Gson;
+
 /**
  * @see
  * 
@@ -28,12 +30,10 @@ public class MapModel {
 	String query = "SELECT * FROM MAP";
 	ResultSet resultSet = this.dao.executeQuery(query);
 	while (resultSet.next()) {
-
 	    String var = resultSet.getString("ID");
 	    String var1 = resultSet.getString("TAB_TYPE");
 	    String var2 = resultSet.getString("TAB_TIME");
 	    String var3 = resultSet.getString("CUR_DATE");
-
 	    System.out.println(var + " -- " + var1 + " -- " + var2 + " -- "
 		    + var3);
 	    // simple fonction d'affichage de des données de la table MAP pour
@@ -46,7 +46,6 @@ public class MapModel {
 
 	String query = "SELECT ID, Cur_Date FROM MAP";
 	ResultSet resultSet = this.dao.executeQuery(query);
-	System.out.println(resultSet);// debug
 	return resultSet;
     }
 
@@ -57,10 +56,10 @@ public class MapModel {
 	// instance de la date
 	formater = new SimpleDateFormat("dd/MM/yy - hh:mm:ss");
 	// mise en format de la date
-
-	String tab = this.map.getTabOut(); // récupération du tableau int
-	String tab1 = this.map.getTabTimeOut();// récupération du tableau int de
-					       // temps
+	String tab = this.map.getTabOut();
+	// récupération du tableau int
+	String tab1 = this.map.getTabTimeOut();
+	// récupération du tableau int de temps
 	String date = formater.format(aujourdhui);// récupération de la date
 	this.dao.executeUpdate("INSERT INTO map (TAB_TYPE,TAB_TIME,CUR_DATE) VALUES ('"
 		+ tab + "','" + tab1 + "','" + date + "')");
@@ -74,15 +73,15 @@ public class MapModel {
 	// instance de la date
 	formater = new SimpleDateFormat("dd/MM/yy - hh:mm:ss");
 	// mise en format de la date
-
-	String tab = this.map.getTabOut(); // récupération du tableau int
-	String tab1 = this.map.getTabTimeOut();// récupération du tableau int de
-					       // temps
+	String tab = this.map.getTabOut();
+	// récupération du tableau int
+	String tab1 = this.map.getTabTimeOut();
+	// récupération du tableau int de temps
 	String date = formater.format(aujourdhui);// récupération de la date
 	this.dao.executeUpdate("UPDATE map SET TAB_TYPE = '" + tab
 		+ "',TAB_TIME = '" + tab1 + "' ,CUR_DATE = '" + date
 		+ "' WHERE ID = '" + id + "' ;");
-	// execution de la requete d'update de la carte en base de données
+	// execution de la requête d'update de la carte en base de données
     }
 
     public void deleteMap(final int id) throws SQLException {
@@ -93,21 +92,14 @@ public class MapModel {
 	String query = "SELECT * FROM MAP WHERE ID = '" + id + "'";
 	ResultSet resultSet = this.dao.executeQuery(query);
 	while (resultSet.next()) {
-
-	    String var1 = resultSet.getString("TAB_TYPE");
-	    // String var2 = resultSet.getString("TAB_TIME");
-
-	    // System.out.println("" + var1 + " -- " + var2 + "");
-	    // simple fonction d'affichage de des données de la table MAP pour
-	    // le debug et les test
-	    // map.setTab();
-	    // map.setTabTime();
-
-	    String tab1 = var1.replace('[', '{');
-	    String tab = tab1.replace(']', '}');
-	    tab.split(",");
-	    System.out.println(tab);
-
+	    Gson gson = new Gson();
+	    int[][] dataMap = gson.fromJson(resultSet.getString("TAB_TYPE"),
+		    int[][].class);
+	    int[][] dataMapTime = gson.fromJson(
+		    resultSet.getString("TAB_TIME"), int[][].class);
+	    this.map.setTab(dataMap);
+	    this.map.setTabTime(dataMapTime);
+	    this.map.updateAllMap();
 	}
     }
 }
