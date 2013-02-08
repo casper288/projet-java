@@ -17,8 +17,8 @@ public class MapPan extends JPanel {
 
 	private static final long serialVersionUID = 4624592622103159699L;
 	private final Window window;
-	private int height = 10 + 1;
-	private int width = 10 + 1;
+	private int height = 100 + 1;
+	private int width = 100 + 1;
 	private Map map = null;
 	private JButton buttonTab[][] = null;
 	/*

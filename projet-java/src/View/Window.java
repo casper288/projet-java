@@ -257,20 +257,12 @@ public class Window extends JFrame {
 		return this.infoPan;
 	}
 
-	public void setInfoPan(final InfoPan infoPan) {
-		this.infoPan = infoPan;
-	}
-
 	public MapPan getMapPan() {
 		return this.mapPan;
 	}
 
 	public synchronized ManagePan getManagePan() {
 		return this.managePan;
-	}
-
-	public void setManagePan(final ManagePan managePan) {
-		this.managePan = managePan;
 	}
 
 	public JPanel getPanWestCenter() {

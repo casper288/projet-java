@@ -7,14 +7,8 @@ public interface MapSoft {
 
 	void updateTime(int y, int x, int type);
 
-	void updateElement();
-
-	void saveMap();
-
-	void exportMap();
-
 	void statsMap();
 
-	void importMap();
+	void initMap(final int height, final int width);
 
 }

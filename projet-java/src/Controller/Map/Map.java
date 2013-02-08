@@ -23,6 +23,7 @@ public class Map implements MapSoft {
 		this.window = window;
 	}
 
+	@Override
 	public void initMap(final int height, final int width) {
 		// Méthode de d'initialisation de la carte int, elle se génère a
 		// l'initialisation de la carte mapPan
@@ -100,24 +101,6 @@ public class Map implements MapSoft {
 	}
 
 	@Override
-	public void updateElement() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void saveMap() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exportMap() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void statsMap() {
 		// méthode de comptage des elements sur le tableau int
 		// grace a un for qui parcoure le tableau et un switch
@@ -162,12 +145,6 @@ public class Map implements MapSoft {
 		this.window.getInfoPan().setNumberStat(typeTab);
 		// on envoie le tout sur la méthode de mise a jour des
 		// labels dans le classe infoPan
-	}
-
-	@Override
-	public void importMap() {
-		// TODO Stub de la méthode généré automatiquement
-
 	}
 
 	public int getHeight() {

@@ -32,9 +32,9 @@ public class ManagePan {
 
 	// champs réglage taille carte
 	private final JLabel mapSizeLabel = new JLabel("Taille carte :");
-	private final JTextField sizeMap = new JTextField("10");
+	private final JTextField sizeMap = new JTextField("100");
 	private final JLabel xSize = new JLabel("x");
-	private final JTextField widthMap = new JTextField("10");
+	private final JTextField widthMap = new JTextField("100");
 	private final JLabel ppSizeMap = new JLabel("");
 
 	// boutons automatique et manuel
