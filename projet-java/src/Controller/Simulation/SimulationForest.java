@@ -25,9 +25,7 @@ public class SimulationForest extends Thread implements Simulation {
 
 	@Override
 	public void run() {
-
 		try {
-
 			for (int l = 0; l < Integer.parseInt(this.window.getManagePan()
 					.getNumberCycleSimulationTextField().getText()); l++) {
 
@@ -159,7 +157,6 @@ public class SimulationForest extends Thread implements Simulation {
 	@Override
 	public void playSimulation() {
 		this.stop = false;
-
 		this.start();
 
 	}
@@ -170,6 +167,7 @@ public class SimulationForest extends Thread implements Simulation {
 		this.window.getManagePan().getStartButton().setText("Démarrer");
 	}
 
+	@Override
 	public void copyTab() {
 
 		for (int i = 1; i < (this.height - 1); i++) {

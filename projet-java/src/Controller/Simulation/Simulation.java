@@ -8,4 +8,6 @@ public interface Simulation {
 
 	public int countNeighbors(final int i, final int j, final int type);
 
+	public void copyTab();
+
 }

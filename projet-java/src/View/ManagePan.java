@@ -45,14 +45,14 @@ public class ManagePan {
 	// champs vitesse de pas en automatique
 	private final JLabel speedSimulationLabel = new JLabel(
 			"Pas en milliseconde :");
-	private final JTextField speedSimulationTextField = new JTextField("1");
+	private final JTextField speedSimulationTextField = new JTextField("20");
 	private final JLabel ppSpeedSimulation = new JLabel("");
 
 	// champs nombre de pas en automatique
 	private final JLabel numberCycleSimulationLabel = new JLabel(
 			"Nombre de pas :");
 	private final JTextField numberCycleSimulationTextField = new JTextField(
-			"10");
+			"100");
 	private final JLabel ppNumberCycleSimulation = new JLabel("");
 
 	private final JButton startButton = new JButton("Démarrer");
