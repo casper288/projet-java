@@ -99,7 +99,10 @@ public class Window extends JFrame {
 				Window.this.colorPan(208, 239, 114);
 				Window.this.setMode("forest");
 				Window.this.setElementSelect("young");
-
+				Window.this.managePan.getSpeedSimulationTextField().setText(
+						"100");
+				Window.this.managePan.getNumberCycleSimulationTextField()
+						.setText("50");
 			}
 		});
 
@@ -111,6 +114,10 @@ public class Window extends JFrame {
 				Window.this.setMode("fire");
 				Window.this.setElementSelect("fire");
 
+				Window.this.managePan.getSpeedSimulationTextField().setText(
+						"500");
+				Window.this.managePan.getNumberCycleSimulationTextField()
+						.setText("50");
 			}
 		});
 
@@ -121,6 +128,10 @@ public class Window extends JFrame {
 				Window.this.colorPan(255, 220, 98);
 				Window.this.setMode("insect");
 				Window.this.setElementSelect("insect");
+				Window.this.managePan.getSpeedSimulationTextField().setText(
+						"200");
+				Window.this.managePan.getNumberCycleSimulationTextField()
+						.setText("10");
 			}
 		});
 
@@ -135,7 +146,10 @@ public class Window extends JFrame {
 				Window.this.getContentPane().add(Window.this.panWest,
 						BorderLayout.WEST);
 				Window.this.getContentPane().validate();
-
+				Window.this.managePan.getSpeedSimulationTextField().setText(
+						"100");
+				Window.this.managePan.getNumberCycleSimulationTextField()
+						.setText("50");
 			}
 		});
 

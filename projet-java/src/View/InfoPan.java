@@ -140,6 +140,10 @@ public class InfoPan {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
 				InfoPan.this.window.setElementSelect("youngPlant");
+				InfoPan.this.window.getManagePan()
+						.getSpeedSimulationTextField().setText("100");
+				InfoPan.this.window.getManagePan()
+						.getNumberCycleSimulationTextField().setText("50");
 			}
 		});
 
@@ -150,6 +154,10 @@ public class InfoPan {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
 				InfoPan.this.window.setElementSelect("plant");
+				InfoPan.this.window.getManagePan()
+						.getSpeedSimulationTextField().setText("100");
+				InfoPan.this.window.getManagePan()
+						.getNumberCycleSimulationTextField().setText("50");
 
 			}
 		});
@@ -161,6 +169,10 @@ public class InfoPan {
 				InfoPan.this.window.colorPan(208, 239, 114);
 				InfoPan.this.window.setMode("forest");
 				InfoPan.this.window.setElementSelect("tree");
+				InfoPan.this.window.getManagePan()
+						.getSpeedSimulationTextField().setText("100");
+				InfoPan.this.window.getManagePan()
+						.getNumberCycleSimulationTextField().setText("50");
 
 			}
 		});
@@ -172,6 +184,10 @@ public class InfoPan {
 				InfoPan.this.window.colorPan(255, 176, 176);
 				InfoPan.this.window.setMode("fire");
 				InfoPan.this.window.setElementSelect("fire");
+				InfoPan.this.window.getManagePan()
+						.getSpeedSimulationTextField().setText("500");
+				InfoPan.this.window.getManagePan()
+						.getNumberCycleSimulationTextField().setText("50");
 			}
 		});
 
@@ -191,6 +207,10 @@ public class InfoPan {
 				InfoPan.this.window.colorPan(255, 220, 98);
 				InfoPan.this.window.setMode("insect");
 				InfoPan.this.window.setElementSelect("insect");
+				InfoPan.this.window.getManagePan()
+						.getSpeedSimulationTextField().setText("200");
+				InfoPan.this.window.getManagePan()
+						.getNumberCycleSimulationTextField().setText("10");
 			}
 		});
 
