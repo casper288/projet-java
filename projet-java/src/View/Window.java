@@ -79,7 +79,7 @@ public class Window extends JFrame {
 		this.modeMenu.add(this.insectModeButton);
 		this.fileMenu.add(this.newMapButton);
 		this.fileMenu.add(this.saveMenu);
-		this.fileMenu.add(this.importButton);
+		// this.fileMenu.add(this.importButton);
 		this.fileMenu.add(this.exitButton);
 		this.menuBar.add(this.fileMenu);
 		this.menuBar.add(this.modeMenu);

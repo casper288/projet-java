@@ -40,7 +40,7 @@ public class ManagePan {
 
 	// boutons automatique et manuel
 	private final JButton automaticButton = new JButton("Automatique");
-	private final JButton manualButton = new JButton("Manuel");
+	private final JButton manualButton = new JButton("Pas à pas");
 
 	// champs vitesse de pas en automatique
 	private final JLabel speedSimulationLabel = new JLabel(
@@ -57,6 +57,7 @@ public class ManagePan {
 
 	private final JButton startButton = new JButton("Démarrer");
 	private final JButton stopButton = new JButton("Stop");
+	private final JButton allButton = new JButton("Tout en un !");
 
 	private SimulationInsect simulationInsect = null;
 	private SimulationFire simulationFire = null;
@@ -92,8 +93,9 @@ public class ManagePan {
 		this.sizeMap.setPreferredSize(new Dimension(40, 20));
 		this.widthMap.setPreferredSize(new Dimension(40, 20));
 		this.ppSizeMap.setPreferredSize(new Dimension(80, 20));
-		this.manualButton.setPreferredSize(new Dimension(110, 25));
+		this.manualButton.setPreferredSize(new Dimension(220, 25));
 		this.speedSimulationTextField.setPreferredSize(new Dimension(40, 20));
+		this.allButton.setPreferredSize(new Dimension(220, 25));
 		this.numberCycleSimulationTextField.setPreferredSize(new Dimension(40,
 				20));
 		this.startButton.setPreferredSize(new Dimension(110, 25));
@@ -104,7 +106,7 @@ public class ManagePan {
 		this.speedSimulationLabel.setFont(this.police);
 		this.numberCycleSimulationLabel.setFont(this.police);
 
-		this.numberCycleSimulationLabel.addKeyListener(new KeyListener() {
+		this.numberCycleSimulationTextField.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(final KeyEvent arg0) {
@@ -114,16 +116,16 @@ public class ManagePan {
 
 			@Override
 			public void keyReleased(final KeyEvent arg0) {
-				String content = ManagePan.this.numberCycleSimulationLabel
+				String content = ManagePan.this.numberCycleSimulationTextField
 						.getText();
 
 				if ("".equals(content)) {
 					return;
 				}
-				if (content.matches("\\d")) {
+				if (content.matches("\\d{1,4}")) {
 
 				} else {
-					ManagePan.this.numberCycleSimulationLabel.setText("");
+					ManagePan.this.numberCycleSimulationTextField.setText("");
 					JOptionPane.showMessageDialog(null, "Numero invalide !",
 							"Attention", JOptionPane.WARNING_MESSAGE);
 				}
@@ -132,7 +134,6 @@ public class ManagePan {
 
 			@Override
 			public void keyPressed(final KeyEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -222,10 +223,15 @@ public class ManagePan {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
 
+				ManagePan.this.simulationForest.stopSimulation();
+				ManagePan.this.simulationInsect.stopSimulation();
+				ManagePan.this.simulationFire.stopSimulation();
+
 				switch (ManagePan.this.window.getMode()) {
 					case "forest" :
 						if (ManagePan.this.simulationForest != null) {
 							ManagePan.this.simulationForest.stopSimulation();
+
 						}
 						break;
 					case "fire" :
@@ -249,11 +255,11 @@ public class ManagePan {
 		this.manualButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent arg0) {
-				ManagePan.this.speedSimulationTextField.setEnabled(false);
-				ManagePan.this.numberCycleSimulationTextField.setEnabled(false);
-				ManagePan.this.manualButton.setBackground(Color.lightGray);
-				ManagePan.this.automaticButton.setBackground(new Color(218,
-						230, 242));
+				// ManagePan.this.speedSimulationTextField.setEnabled(false);
+				// ManagePan.this.numberCycleSimulationTextField.setEnabled(false);
+				// ManagePan.this.manualButton.setBackground(Color.lightGray);
+				// ManagePan.this.automaticButton.setBackground(new Color(218,
+				// 230, 242));
 				ManagePan.this.numberCycleSimulationTextField.setText("1");
 				ManagePan.this.speedSimulationTextField.setText("1");
 
@@ -273,6 +279,27 @@ public class ManagePan {
 			}
 		});
 
+		this.allButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(final ActionEvent arg0) {
+				ManagePan.this.speedSimulationTextField.setText("50");
+				ManagePan.this.numberCycleSimulationTextField.setText("9999");
+
+				ManagePan.this.simulationForest = new SimulationForest(
+						ManagePan.this.window);
+				ManagePan.this.simulationForest.playSimulation();
+				// test
+				ManagePan.this.simulationFire = new SimulationFire(
+						ManagePan.this.window);
+				ManagePan.this.simulationFire.playSimulation();
+				ManagePan.this.simulationInsect = new SimulationInsect(
+						ManagePan.this.window);
+				ManagePan.this.simulationInsect.playSimulation();
+
+			}
+		});
+
 		this.startButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -284,6 +311,7 @@ public class ManagePan {
 						ManagePan.this.simulationForest = new SimulationForest(
 								ManagePan.this.window);
 						ManagePan.this.simulationForest.playSimulation();
+
 						break;
 					case "fire" :
 						ManagePan.this.simulationFire = new SimulationFire(
@@ -336,7 +364,7 @@ public class ManagePan {
 
 		panCenter.add(this.ppSizeMap);
 		panCenter.add(ppPanel1);
-		panCenter.add(this.automaticButton);
+		// panCenter.add(this.automaticButton);
 		panCenter.add(this.manualButton);
 		panCenter.add(ppPanel2);
 		panCenter.add(this.speedSimulationLabel);
@@ -351,6 +379,7 @@ public class ManagePan {
 		panCenter.add(ppPanel5);
 		panCenter.add(this.startButton);
 		panCenter.add(this.stopButton);
+		// panCenter.add(this.allButton);
 
 		container.add(panCenter, BorderLayout.CENTER);
 
