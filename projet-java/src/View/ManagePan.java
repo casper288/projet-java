@@ -256,6 +256,7 @@ public class ManagePan {
 						230, 242));
 				ManagePan.this.numberCycleSimulationTextField.setText("1");
 				ManagePan.this.speedSimulationTextField.setText("1");
+
 			}
 		});
 

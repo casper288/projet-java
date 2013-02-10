@@ -88,7 +88,8 @@ public class SimulationInsect extends Thread implements Simulation {
 
 				// System.out.println(this.board + " ------- " + this.board2);
 
-				this.board = this.board2.clone();
+				this.copyTab2();
+
 				this.window.getMapPan().getMap().setTab(this.board);
 				this.window.getMapPan().getMap().updateMapOnly();
 
@@ -149,6 +150,19 @@ public class SimulationInsect extends Thread implements Simulation {
 			for (int j = 1; j < (this.width - 1); j++) {
 
 				this.board2[i][j] = this.board[i][j];
+
+			}
+		}
+
+	}
+
+	public void copyTab2() {
+
+		for (int i = 1; i < (this.height - 1); i++) {
+
+			for (int j = 1; j < (this.width - 1); j++) {
+
+				this.board[i][j] = this.board2[i][j];
 
 			}
 		}
